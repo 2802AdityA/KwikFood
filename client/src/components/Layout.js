@@ -1,4 +1,5 @@
 import styles from "../styles/components/Layout.module.css";
+
 import { useSignOut, useUserId } from "@nhost/react";
 import { useUserData } from "@nhost/react";
 import { gql, useQuery } from "@apollo/client";
@@ -11,7 +12,9 @@ import {
 	LogoutIcon,
 	UserIcon,
 } from "@heroicons/react/outline";
+
 import Avatar from "./Avatar";
+
 const GET_USER_QUERY = gql`
 	query GetUser($id: uuid!) {
 		user(id: $id) {

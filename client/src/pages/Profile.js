@@ -1,9 +1,11 @@
 import styles from "../styles/pages/Profile.module.css";
+
 import { gql, useMutation } from "@apollo/client";
 import { toast } from "react-hot-toast";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useOutletContext } from "react-router-dom";
+
 import Input from "../components/Input";
 
 const UPDATE_USER_MUTATION = gql`

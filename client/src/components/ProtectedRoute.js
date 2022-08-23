@@ -1,6 +1,8 @@
 import styles from "../styles/components/ProtectedRoute.module.css";
+
 import { useAuthenticationStatus } from "@nhost/react";
 import { Navigate, useLocation } from "react-router-dom";
+
 import Spinner from "./Spinner";
 
 const ProtectedRoute = ({ children }) => {
