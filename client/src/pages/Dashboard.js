@@ -8,8 +8,9 @@ const Dashboard = () => {
 	useEffect(() => {
 		setEmail(user.email);
 	}, []);
-	// adityasingla.2802@gmail.com
-	return email === "muskangarg02270@gmail.com" ? <Student /> : <Canteen />;
+	const canteenEmail = "muskangarg02270@gmail.com";
+	// const canteenEmail = "adityasingla.2802@gmail.com";
+	return email === canteenEmail ? <Student /> : <Canteen />;
 };
 
 export default Dashboard;
