@@ -29,6 +29,7 @@ const SignUp = () => {
 			metadata: {
 				firstName,
 				lastName,
+				email,
 			},
 		});
 	};
