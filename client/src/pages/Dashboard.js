@@ -1,9 +1,10 @@
 import styles from "../styles/pages/Dashboard.module.css";
-
 import { useOutletContext } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
+
 const Dashboard = () => {
+
 	const { user } = useOutletContext();
 
 	return (
