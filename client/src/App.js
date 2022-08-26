@@ -32,6 +32,7 @@ function App() {
 							}
 						>
 							<Route index element={<Dashboard />} />
+
 							<Route path="profile" element={<Profile />} />
 						</Route>
 					</Routes>

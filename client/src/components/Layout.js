@@ -1,7 +1,6 @@
 import styles from "../styles/components/Layout.module.css";
 
 import { useSignOut, useUserId } from "@nhost/react";
-import { useUserData } from "@nhost/react";
 import { gql, useQuery } from "@apollo/client";
 import { Fragment } from "react";
 import { Outlet, Link } from "react-router-dom";
