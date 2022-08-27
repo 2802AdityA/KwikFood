@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import styles from "../styles/pages/Student.module.css";
 import { Helmet } from "react-helmet";
 
-function Student() {
+const Student = () => {
 	const { user } = useOutletContext();
 	return (
 		<>
@@ -28,6 +28,6 @@ function Student() {
 			</div>
 		</>
 	);
-}
+};
 
 export default Student;
