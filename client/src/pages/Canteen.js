@@ -12,7 +12,6 @@ const GET_MENU = gql`
 	}
 `;
 
-
 const INSERT_MULTIPLE_ITEMS_MUTATION = gql`
   mutation insert_multiple_items($menu: [menu_insert_input!]!) {
     insert_menu(objects: $menu) {
