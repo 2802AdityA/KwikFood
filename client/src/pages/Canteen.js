@@ -42,16 +42,15 @@ const UPDATE_MENU = gql`
 `;
 
 const DELETE_MENU_ITEM = gql`
-  mutation delete_a_foodItem($id: uuid!) {
-    delete_menu_by_pk(id: $id) {
-      id
-      name
-      price
-      quantity
-    }
-  }
+	mutation delete_a_foodItem($id: uuid!) {
+		delete_menu_by_pk(id: $id) {
+			id
+			name
+			price
+			quantity
+		}
+	}
 `;
-
 
 const Canteen = () => {
 	const { loading, error, data } = useQuery(GET_MENU);
@@ -76,7 +75,7 @@ const Canteen = () => {
 		setAddMenuData(newMenuData);
 	};
 
-	function refreshPage(){
+	function refreshPage() {
 		window.location.reload(false);
 	}
 
@@ -89,18 +88,16 @@ const Canteen = () => {
 						name: addMenuData.name,
 						price: addMenuData.price,
 						quantity: addMenuData.quantity,
-					}
-				}
-			})
+					},
+				},
+			});
 			const newDetails = [...menu, newDetail];
 			setMenu(newDetails);
-		}
-		catch (err) {
+		} catch (err) {
 			console.log(err);
 		}
 		refreshPage();
 	};
-
 
 	// update menu items
 	const [updateItem] = useMutation(UPDATE_MENU);
@@ -123,24 +120,23 @@ const Canteen = () => {
 
 	const handleEditMenuSubmit = async (event) => {
 		event.preventDefault();
-		try{
+		try {
 			const editedMenu = await updateItem({
-				variables:{
+				variables: {
 					id: editMenuId,
 					changes: {
-					name: editMenuData.name,
-					price: editMenuData.price,
-					quantity: editMenuData.quantity
-					}
-				}
-			})
+						name: editMenuData.name,
+						price: editMenuData.price,
+						quantity: editMenuData.quantity,
+					},
+				},
+			});
 			const newMenu = [...menu];
 			const index = menu.findIndex((menu) => menu.id === editMenuId);
 			newMenu[index] = editedMenu;
 			setMenu(newMenu);
 			setEditMenuId(null);
-		}
-		catch(err){
+		} catch (err) {
 			console.log(err);
 		}
 		refreshPage();
@@ -163,22 +159,20 @@ const Canteen = () => {
 		setEditMenuId(null);
 	};
 
-
 	// delete menu item
 	const [deleteItem] = useMutation(DELETE_MENU_ITEM);
 	const handleDeleteClick = async (menuId) => {
-		try{
+		try {
 			await deleteItem({
-				variables:{
-					id: menuId
-				}
-			})
+				variables: {
+					id: menuId,
+				},
+			});
 			const newMenu = [...menu];
 			const index = menu.findIndex((menu) => menu.id === menuId);
 			newMenu.splice(index, 1);
 			setMenu(newMenu);
-		}
-		catch(err){
+		} catch (err) {
 			console.log(err);
 		}
 		refreshPage();
@@ -190,67 +184,81 @@ const Canteen = () => {
 				"no data"
 			) : (
 				<form onSubmit={handleEditMenuSubmit}>
-					<table>
+					<table className="table">
 						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Price</th>
-								<th>Quantity</th>
-								<th>Update</th>
+							<tr className="row">
+								<th className="col">Name</th>
+								<th className="col">Price</th>
+								<th className="col">Quantity</th>
+								<th className="col">Actions</th>
 							</tr>
 						</thead>
 						<tbody>
 							{!error
 								? menuList?.map((itemDetails) => {
-									return (
-										<div>
-											{editMenuId === itemDetails.id ? (
-												<EditRow
-													editMenuData={editMenuData}
-													handleEditMenuChange={handleEditMenuChange}
-													handleCancelClick={handleCancelClick}
-												/>
-											) : (
-												<ReadRow
-													itemDetails={itemDetails}
-													handleEditClick={handleEditClick}
-													handleDeleteClick={handleDeleteClick}
-												/>
-											)}
-										</div>
-									);
-								})
+										return (
+											<div>
+												{editMenuId === itemDetails.id ? (
+													<EditRow
+														editMenuData={editMenuData}
+														handleEditMenuChange={handleEditMenuChange}
+														handleCancelClick={handleCancelClick}
+													/>
+												) : (
+													<ReadRow
+														itemDetails={itemDetails}
+														handleEditClick={handleEditClick}
+														handleDeleteClick={handleDeleteClick}
+													/>
+												)}
+											</div>
+										);
+								  })
 								: "Something went wrong, Check back after sometime "}
 						</tbody>
+						<tfoot>
+							<tr className="row">
+								<div>
+									<form onSubmit={handleAddMenuSubmit}>
+										<td className="col">
+											<input
+												className="form-control"
+												type="text"
+												name="name"
+												required="required"
+												onChange={handleAddMenuChange}
+											/>
+										</td>
+										<td className="col">
+											<input
+												className="form-control"
+												type="text"
+												name="price"
+												required="required"
+												onChange={handleAddMenuChange}
+											/>
+										</td>
+										<td className="col">
+											<input
+												className="form-control"
+												type="text"
+												name="quantity"
+												required="required"
+												onChange={handleAddMenuChange}
+											/>
+										</td>
+										<td className="col">
+											<button className="btn" type="submit">
+												Add
+											</button>
+										</td>
+									</form>
+								</div>
+							</tr>
+						</tfoot>
 					</table>
 				</form>
 			)}
-			<div>
-				<form onSubmit={handleAddMenuSubmit}>
-					<input
-						className="form-control"
-						type="text"
-						name="name"
-						required="required"
-						onChange={handleAddMenuChange}
-					/>
-					<input
-						className="form-control"
-						type="text"
-						name="price"
-						required="required"
-						onChange={handleAddMenuChange}
-					/>
-					<input
-						className="form-control"
-						type="text"
-						name="quantity"
-						required="required"
-						onChange={handleAddMenuChange}
-					/>
-					<button type="submit">Add</button>
-				</form>
-			</div>
 		</div>
 	);
 };

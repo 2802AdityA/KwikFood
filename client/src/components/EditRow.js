@@ -2,8 +2,8 @@ import React from "react";
 
 const EditRow = ({ editMenuData, handleEditMenuChange, handleCancelClick }) => {
 	return (
-		<tr>
-			<td>
+		<tr className="row">
+			<td className="col">
 				<input
 					className="form-control"
 					type="text"
@@ -14,7 +14,7 @@ const EditRow = ({ editMenuData, handleEditMenuChange, handleCancelClick }) => {
 					onChange={handleEditMenuChange}
 				/>
 			</td>
-			<td>
+			<td className="col">
 				<input
 					className="form-control"
 					type="text"
@@ -25,7 +25,7 @@ const EditRow = ({ editMenuData, handleEditMenuChange, handleCancelClick }) => {
 					onChange={handleEditMenuChange}
 				/>
 			</td>
-			<td>
+			<td className="col">
 				<input
 					className="form-control"
 					type="text"
@@ -36,9 +36,12 @@ const EditRow = ({ editMenuData, handleEditMenuChange, handleCancelClick }) => {
 					onChange={handleEditMenuChange}
 				/>
 			</td>
-			<td>
-				<button type="submit">Save</button>
-				<button type="button" onClick={handleCancelClick}>
+			<td className="col">
+				<button className="btn" type="submit">
+					Save
+				</button>
+
+				<button type="button" className="btn" onClick={handleCancelClick}>
 					Cancel
 				</button>
 			</td>

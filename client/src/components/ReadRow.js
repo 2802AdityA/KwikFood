@@ -2,15 +2,23 @@ import React from "react";
 
 const ReadRow = ({ itemDetails, handleEditClick, handleDeleteClick }) => {
 	return (
-		<tr>
-			<td>{itemDetails.name}</td>
-			<td>{itemDetails.price}</td>
-			<td>{itemDetails.quantity}</td>
-			<td>
-				<button type="button" onClick={(e) => handleEditClick(e, itemDetails)}>
+		<tr className="row">
+			<td className="col">{itemDetails.name}</td>
+			<td className="col">{itemDetails.price}</td>
+			<td className="col">{itemDetails.quantity}</td>
+			<td className="col">
+				<button
+					className="btn"
+					type="button"
+					onClick={(e) => handleEditClick(e, itemDetails)}
+				>
 					Edit
 				</button>
-				<button type="button" onClick={() => handleDeleteClick(itemDetails.id)}>
+				<button
+					className="btn"
+					type="button"
+					onClick={() => handleDeleteClick(itemDetails.id)}
+				>
 					Delete
 				</button>
 			</td>
