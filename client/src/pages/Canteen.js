@@ -27,7 +27,7 @@ const INSERT_MULTIPLE_ITEMS_MUTATION = gql`
 `;
 
 const UPDATE_MENU = gql`
-	mutation update_many_foodItems($id: Int, $changes: menu_set_input) {
+	mutation update_many_foodItems($id: uuid, $changes: menu_set_input) {
 		update_menu_many(
 			updates: [{ where: { id: { _eq: $id } }, _set: $changes }]
 		) {
@@ -41,18 +41,70 @@ const UPDATE_MENU = gql`
 	}
 `;
 
+const DELETE_MENU_ITEM = gql`
+  mutation delete_a_foodItem($id: uuid!) {
+    delete_menu_by_pk(id: $id) {
+      id
+      name
+      price
+      quantity
+    }
+  }
+`;
+
+
 const Canteen = () => {
 	const { loading, error, data } = useQuery(GET_MENU);
 	const menuList = data?.menu;
 	const [menu, setMenu] = useState(menuList);
+
 	// add new items to menu
 	const [insertItem] = useMutation(INSERT_MULTIPLE_ITEMS_MUTATION);
-	const [editMenuData, setEditMenuData] = useState({
+
+	const [addMenuData, setAddMenuData] = useState({
 		name: "",
 		price: "",
 		quantity: "",
 	});
-	const [addMenuData, setAddMenuData] = useState({
+
+	const handleAddMenuChange = (event) => {
+		event.preventDefault();
+		const fieldName = event.target.getAttribute("name");
+		const fieldValue = event.target.value;
+		const newMenuData = { ...addMenuData };
+		newMenuData[fieldName] = fieldValue;
+		setAddMenuData(newMenuData);
+	};
+
+	function refreshPage(){
+		window.location.reload(false);
+	}
+
+	const handleAddMenuSubmit = async (event) => {
+		event.preventDefault();
+		try {
+			const newDetail = await insertItem({
+				variables: {
+					menu: {
+						name: addMenuData.name,
+						price: addMenuData.price,
+						quantity: addMenuData.quantity,
+					}
+				}
+			})
+			const newDetails = [...menu, newDetail];
+			setMenu(newDetails);
+		}
+		catch (err) {
+			console.log(err);
+		}
+		refreshPage();
+	};
+
+
+	// update menu items
+	const [updateItem] = useMutation(UPDATE_MENU);
+	const [editMenuData, setEditMenuData] = useState({
 		name: "",
 		price: "",
 		quantity: "",
@@ -60,59 +112,38 @@ const Canteen = () => {
 
 	const [editMenuId, setEditMenuId] = useState(null);
 
-	const handleAddMenuChange = (event) => {
-		event.preventDefault();
-
-		const fieldName = event.target.getAttribute("name");
-		const fieldValue = event.target.value;
-
-		const newMenuData = { ...addMenuData };
-		newMenuData[fieldName] = fieldValue;
-
-		setAddMenuData(newMenuData);
-	};
-
 	const handleEditMenuChange = (event) => {
 		event.preventDefault();
-
 		const fieldName = event.target.getAttribute("name");
 		const fieldValue = event.target.value;
-
 		const newMenuData = { ...editMenuData };
 		newMenuData[fieldName] = fieldValue;
-
 		setEditMenuData(newMenuData);
 	};
 
-	const handleAddMenuSubmit = (event) => {
+	const handleEditMenuSubmit = async (event) => {
 		event.preventDefault();
-
-		const newDetail = {
-			name: addMenuData.name,
-			price: addMenuData.price,
-			quantity: addMenuData.quantity,
-		};
-
-		const newDetails = [...menu, newDetail];
-		setMenu(newDetails);
-	};
-
-	const handleEditMenuSubmit = (event) => {
-		event.preventDefault();
-
-		const editedMenu = {
-			name: editMenuData.name,
-			price: editMenuData.price,
-			quantity: editMenuData.quantity,
-		};
-		const newMenu = [...menu];
-
-		const index = menu.findIndex((menu) => menu.id === editMenuId);
-
-		newMenu[index] = editedMenu;
-
-		setMenu(newMenu);
-		setEditMenuId(null);
+		try{
+			const editedMenu = await updateItem({
+				variables:{
+					id: editMenuId,
+					changes: {
+					name: editMenuData.name,
+					price: editMenuData.price,
+					quantity: editMenuData.quantity
+					}
+				}
+			})
+			const newMenu = [...menu];
+			const index = menu.findIndex((menu) => menu.id === editMenuId);
+			newMenu[index] = editedMenu;
+			setMenu(newMenu);
+			setEditMenuId(null);
+		}
+		catch(err){
+			console.log(err);
+		}
+		refreshPage();
 	};
 
 	const handleEditClick = (event, menu) => {
@@ -132,14 +163,25 @@ const Canteen = () => {
 		setEditMenuId(null);
 	};
 
-	const handleDeleteClick = (menuId) => {
-		const newMenu = [...menu];
 
-		const index = menu.findIndex((menu) => menu.id === menuId);
-
-		newMenu.splice(index, 1);
-
-		setMenu(newMenu);
+	// delete menu item
+	const [deleteItem] = useMutation(DELETE_MENU_ITEM);
+	const handleDeleteClick = async (menuId) => {
+		try{
+			await deleteItem({
+				variables:{
+					id: menuId
+				}
+			})
+			const newMenu = [...menu];
+			const index = menu.findIndex((menu) => menu.id === menuId);
+			newMenu.splice(index, 1);
+			setMenu(newMenu);
+		}
+		catch(err){
+			console.log(err);
+		}
+		refreshPage();
 	};
 
 	return (
@@ -160,24 +202,24 @@ const Canteen = () => {
 						<tbody>
 							{!error
 								? menuList?.map((itemDetails) => {
-										return (
-											<div>
-												{editMenuId === itemDetails.id ? (
-													<EditRow
-														editMenuData={editMenuData}
-														handleEditMenuChange={handleEditMenuChange}
-														handleCancelClick={handleCancelClick}
-													/>
-												) : (
-													<ReadRow
-														itemDetails={itemDetails}
-														handleEditClick={handleEditClick}
-														handleDeleteClick={handleDeleteClick}
-													/>
-												)}
-											</div>
-										);
-								  })
+									return (
+										<div>
+											{editMenuId === itemDetails.id ? (
+												<EditRow
+													editMenuData={editMenuData}
+													handleEditMenuChange={handleEditMenuChange}
+													handleCancelClick={handleCancelClick}
+												/>
+											) : (
+												<ReadRow
+													itemDetails={itemDetails}
+													handleEditClick={handleEditClick}
+													handleDeleteClick={handleDeleteClick}
+												/>
+											)}
+										</div>
+									);
+								})
 								: "Something went wrong, Check back after sometime "}
 						</tbody>
 					</table>
