@@ -53,6 +53,7 @@ const DELETE_MENU_ITEM = gql`
 `;
 
 const Canteen = () => {
+	// eslint-disable-next-line
 	const { loading, error, data } = useQuery(GET_MENU);
 	const menuList = data?.menu;
 	const [menu, setMenu] = useState(menuList);
