@@ -21,6 +21,7 @@ const UPDATE_USER_MUTATION = gql`
 	}
 `;
 const Profile = () => {
+	// eslint-disable-next-line
 	const [mutateUser, { loading: updatingProfile }] =
 		useMutation(UPDATE_USER_MUTATION);
 

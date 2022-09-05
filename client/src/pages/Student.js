@@ -1,33 +1,30 @@
 import React from "react";
-import { useOutletContext } from "react-router-dom";
-import styles from "../styles/pages/Student.module.css";
-import { Helmet } from "react-helmet";
+import StudentHome from "../components/Student/StudentHome.js";
+import Cart from "../components/Student/Cart";
+import { CartProvider } from "react-use-cart";
+import { gql, useQuery } from "@apollo/client";
+const GET_MENU = gql`
+	query GetMenu {
+		menu {
+			id
+			name
+			price
+			quantity
+		}
+	}
+`;
 
-const Student = () => {
-	const { user } = useOutletContext();
+function Student() {
+	const { loading, error, data } = useQuery(GET_MENU);
+	const menuList = data?.menu;
 	return (
-		<>
-			<Helmet>
-				<title>Dashboard - Nhost</title>
-			</Helmet>
-
-			<div>
-				<h2 className={styles.title}>Dashboard</h2>
-
-				<p className={styles["welcome-text"]}>
-					Welcome, {user?.metadata?.firstName || "stranger"}{" "}
-					<span role="img" alt="hello">
-						👋
-					</span>
-				</p>
-
-				<p className={styles["info-text"]}>
-					Edit the <code>src/pages/Dashboard.js</code> file to populate this
-					page.
-				</p>
-			</div>
-		</>
+		<div>
+			<CartProvider>
+				<StudentHome />
+				<Cart menuList={!error ? menuList : []} />
+			</CartProvider>
+		</div>
 	);
-};
+}
 
-export default Student;
+export default StudentHome;

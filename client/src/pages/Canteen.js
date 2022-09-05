@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { gql, useQuery, useMutation } from "@apollo/client";
-import ReadRow from "../components/ReadRow";
-import EditRow from "../components/EditRow";
+import ReadRow from "../components/Canteen/ReadRow";
+import EditRow from "../components/Canteen/EditRow";
 
 const GET_MENU = gql`
 	query GetMenu {
@@ -53,7 +53,9 @@ const DELETE_MENU_ITEM = gql`
 `;
 
 const Canteen = () => {
+
 	const {error, data } = useQuery(GET_MENU);
+
 	const menuList = data?.menu;
 	const [menu, setMenu] = useState(menuList);
 
