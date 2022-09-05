@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { gql, useQuery, useMutation } from "@apollo/client";
 import ReadRow from "../components/Canteen/ReadRow";
 import EditRow from "../components/Canteen/EditRow";
+import CurrentOrder from "../components/Canteen/CurrentOrders";
 
 const GET_MENU = gql`
 	query GetMenu {
@@ -260,6 +261,7 @@ const Canteen = () => {
 					</table>
 				</form>
 			)}
+			<CurrentOrder/>
 		</div>
 	);
 };

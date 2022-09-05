@@ -27,4 +27,4 @@ function Student() {
 	);
 }
 
-export default StudentHome;
+export default Student;
