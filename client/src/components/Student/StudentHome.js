@@ -15,7 +15,7 @@ const GET_MENU = gql`
 `;
 
 const StudentHome = () => {
-	const { loading, error, data } = useQuery(GET_MENU);
+	const { error, data } = useQuery(GET_MENU);
 	const menuList = data?.menu;
 
 	const { user } = useOutletContext();
