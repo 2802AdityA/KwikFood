@@ -2,6 +2,7 @@ import React from "react";
 import { useOutletContext } from "react-router-dom";
 import { useCart } from "react-use-cart";
 import { gql, useMutation } from "@apollo/client";
+import styles from "../../styles/pages/Student.module.css";
 
 // # GET CURRENT ORDERS QUERY
 
@@ -50,7 +51,7 @@ const Cart = (menuList) => {
 	const [insertOrder] = useMutation(INSERT_ORDER);
 	const { user } = useOutletContext();
 
-	if (isEmpty) return <h1 className="text-center">Your Cart is Empty</h1>;
+	if (isEmpty) return <h1 className= {styles.title}>Your Cart is Empty</h1>;
 
 	const handleSubmitOrder = async () => {
 		try {
@@ -71,31 +72,51 @@ const Cart = (menuList) => {
 	};
 
 	return (
-		<section className="py-4 container">
-			<div className="row justify-content-center">
-				<div className="col-12">
-					<h5>
-						Cart({totalUniqueItems}) total Items: ({totalItems})
-					</h5>
-					<table className="table table-light table-hover m-0">
-						<tbody>
+		<div className="cart">
+			{/* <div>
+				<h2 className={styles.title}>Order Your Meal</h2>
+				<p className={styles["welcome-text"]}>
+					Welcome, {user?.metadata?.firstName || "stranger"}{" "}
+					<span role="img" alt="hello">
+						👋
+					</span>
+				</p>
+			</div> */}
+			<h1 className={styles.title}>YOUR ORDERED ITEMS <i class="fa-sharp fa-solid fa-cart-shopping"></i><span className="badge badge-warning">{totalUniqueItems}</span></h1>
+			<div>
+				{/* {!data ? (
+					"no data"
+				) : ( */}
+				
+				<div className="card">
+					<div className="card-body">
+						<table className="table">
+							<thead>
+								<tr className="row table-secondary">
+									<th className="col">Item Name</th>
+									<th className="col">Price</th>
+									<th className="col">Quantity</th>
+									<th className="col">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
 							{items.map((item, index) => {
 								return (
-									<tr key={index}>
-										<td>{item.name}</td>
-										<td>{item.price}</td>
-										<td> Quantity - ({item.quantity})</td>
-										<td>
+									<tr  className="row" key={index}>
+										<td className="col">{item.name}</td>
+										<td className="col">{item.price}</td>
+										<td className="col">{item.quantity}</td>
+										<td className="col action-col">
 											<button
-												className="btn btn-info ms-2"
+												className="btn item-btn-cart minus"
 												onClick={() =>
 													updateItemQuantity(item.id, item.quantity - 1)
 												}
 											>
-												-
+												<i className="fa fa-minus"></i>
 											</button>
 											<button
-												className="btn btn-info ms-2"
+												className="btn item-btn-cart"
 												onClick={() => {
 													const itemDetail = menuList.menuList?.find(
 														(itemDetails) => {
@@ -111,25 +132,26 @@ const Cart = (menuList) => {
 													);
 												}}
 											>
-												+
+												<i className="fa fa-plus "></i>
 											</button>
 											<button
-												className="btn btn-danger ms-2"
+												className="btn trash-btn"
 												onClick={() => {
 													removeItem(item.id);
 												}}
 											>
-												Remove Item
+												<i className="fa-solid fa-trash"></i>
 											</button>
 										</td>
 									</tr>
 								);
 							})}
-						</tbody>
-					</table>
+							</tbody>
+						</table>
+					</div>
 				</div>
 				<div className="col-auto mt-3 ms-auto">
-					<h2>Total Price - ${cartTotal}</h2>
+					<h4 className={styles.totalprice}>Total Price - Rs.{cartTotal}</h4>
 				</div>
 				<div className="col-auto">
 					<button
@@ -141,7 +163,7 @@ const Cart = (menuList) => {
 						Empty Cart
 					</button>
 					<button
-						className="btn btn-primary m-2"
+						className="btn btn-success m-2"
 						onClick={() => {
 							handleSubmitOrder();
 							emptyCart();
@@ -151,7 +173,8 @@ const Cart = (menuList) => {
 					</button>
 				</div>
 			</div>
-		</section>
+		
+		</div>
 	);
 };
 
