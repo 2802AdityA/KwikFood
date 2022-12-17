@@ -1,6 +1,6 @@
 import React from "react";
 import { useCart } from "react-use-cart";
-
+import "../../styles/Student/StudentHome.css";
 const StudentMenu = ({ itemDetails }) => {
 	const { addItem, getItem } = useCart();
 
@@ -11,7 +11,7 @@ const StudentMenu = ({ itemDetails }) => {
 			<td className="col">{itemDetails.quantity}</td>
 			<td className="col">
 				<button
-					className="btn"
+					className="btn item-btn"
 					type="button"
 					onClick={() => {
 						const item = getItem(itemDetails.id);
@@ -23,7 +23,7 @@ const StudentMenu = ({ itemDetails }) => {
 							: addItem(itemDetails);
 					}}
 				>
-					Add To Cart
+					<i className="fa fa-plus"></i>
 				</button>
 			</td>
 		</tr>
