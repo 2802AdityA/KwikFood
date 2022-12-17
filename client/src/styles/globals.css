@@ -12,8 +12,8 @@ body {
   line-height: 1.5;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: white ;/* For browsers that do not support gradients */
-  background-image: linear-gradient(60deg,rgba(159, 128, 82, 0.76),rgba(105, 105, 122, 0.53));
+  background-color: #f8f8fb;/* For browsers that do not support gradients */
+  /* background-image: linear-gradient(60deg,rgba(159, 128, 82, 0.76),rgba(105, 105, 122, 0.53)); */
 }
 
 h1,
