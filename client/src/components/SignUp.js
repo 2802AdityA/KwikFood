@@ -1,4 +1,4 @@
-import styles from "../styles/components/SignUp.module.css";
+import "../styles/components/SignUp.css";
 
 import { useSignUpEmailPassword } from "@nhost/react";
 import { useState } from "react";
@@ -41,20 +41,20 @@ const SignUp = () => {
 	const disableForm = isLoading || needsEmailVerification;
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.card}>
-				<div className={styles["logo-wrapper"]}>
+		<div className="container">
+			<div className="card">
+				<div className="logo-wrapper">
 					<img src={process.env.PUBLIC_URL + "logo.svg"} alt="logo" />
 				</div>
 
 				{needsEmailVerification ? (
-					<p className={styles["verification-text"]}>
+					<p className="verification-text">
 						Please check your mailbox and follow the verification link to verify
 						your email.
 					</p>
 				) : (
-					<form onSubmit={handleOnSubmit} className={styles.form}>
-						<div className={styles["input-group"]}>
+					<form onSubmit={handleOnSubmit} className="form">
+						<div className="input-group">
 							<Input
 								label="First name"
 								value={firstName}
@@ -90,21 +90,21 @@ const SignUp = () => {
 						<button
 							type="submit"
 							disabled={disableForm}
-							className={styles.button}
+							className="button"
 						>
 							{isLoading ? <Spinner size="sm" /> : "Create account"}
 						</button>
 
 						{isError ? (
-							<p className={styles["error-text"]}>{error?.message}</p>
+							<p className="error-text">{error?.message}</p>
 						) : null}
 					</form>
 				)}
 			</div>
 
-			<p className={styles.text}>
+			<p className="text">
 				Already have an account?{" "}
-				<Link to="/sign-in" className={styles.link}>
+				<Link to="/sign-in" className="link">
 					Sign in
 				</Link>
 			</p>
