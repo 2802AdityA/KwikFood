@@ -11,7 +11,7 @@ const Dashboard = () => {
 	}, []);
 	// const canteenEmail = "muskangarg02270@gmail.com";
 	const canteenEmail = "adityasingla.2802@gmail.com";
-	return email === canteenEmail ? <Student /> : <Canteen />;
+	return email === canteenEmail ? <Canteen /> : <Student />;
 };
 
 export default Dashboard;
