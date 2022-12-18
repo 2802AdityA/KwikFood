@@ -3,6 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import styles from "../../styles/pages/Student.module.css";
 import { gql, useQuery } from "@apollo/client";
 import StudentMenu from "./StudentMenu";
+import "../../styles/Student/StudentHome.css";
 const GET_MENU = gql`
 	query GetMenu {
 		menu {
@@ -22,41 +23,51 @@ const StudentHome = () => {
 
 	return (
 		<>
-			<div>
-				<h2 className={styles.title}>Order Your Meal</h2>
-				<p className={styles["welcome-text"]}>
-					Welcome, {user?.metadata?.firstName || "stranger"}{" "}
-					<span role="img" alt="hello">
-						👋
-					</span>
-				</p>
-			</div>
+			<section class="banner">
+				<div class="content">
+					<h1>Order Your Meal</h1>
+					<p className="call-to-action">
+						Welcome, {user?.metadata?.firstName || "stranger"}{" "}
+						<span role="img" alt="hello">
+							👋
+						</span>
+					</p>
+				</div>
+				<img src="https://images.unsplash.com/photo-1460306855393-0410f61241c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format" />
+			</section>
 			<div>
 				{!data ? (
 					"no data"
 				) : (
-					<table className="table">
-						<thead>
-							<tr className="row">
-								<th className="col">Name</th>
-								<th className="col">Price</th>
-								<th className="col">Available Quantity</th>
-								<th className="col">Actions</th>
-							</tr>
-						</thead>
-						<tbody>
-							{!error
-								? menuList?.map((itemDetails) => {
-										return (
-											<StudentMenu
-												key={itemDetails.id}
-												itemDetails={itemDetails}
-											/>
-										);
-								  })
-								: "Something went wrong, Check back after sometime "}
-						</tbody>
-					</table>
+					<div className="card">
+						<div className="card-body">
+							<form className="app-search">
+								<input type="text" className="form-control" placeholder="Search" />
+							</form>
+							<table className="table">
+								<thead>
+									<tr className="row table-primary">
+										<th className="col">Item Name</th>
+										<th className="col">Price</th>
+										<th className="col">Available Quantity</th>
+										<th className="col">Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									{!error
+										? menuList?.map((itemDetails) => {
+											return (
+												<StudentMenu
+													key={itemDetails.id}
+													itemDetails={itemDetails}
+												/>
+											);
+										})
+										: "Something went wrong, Check back after sometime "}
+								</tbody>
+							</table>
+						</div>
+					</div>
 				)}
 			</div>
 		</>
