@@ -16,16 +16,16 @@
   padding-left: 20px;
   padding-right: 20px;
   margin-bottom: 50px;
-  margin-top: 50px;
+  margin-top: 20px;
+  border-radius: 10px;
 }
-.card-body{
+.card-body {
   width: 90%;
 }
-.plus{
+.plus {
   text-align: center;
 }
 /* CART */
-
 
 .item-btn-cart {
   width: 30px;
@@ -42,10 +42,10 @@
   background-color: rgb(255, 255, 255);
 }
 
-.item-btn-cart:hover .sign{
+.item-btn-cart:hover .sign {
   color: #2353eb;
 }
-.item-btn-cart:focus .sign{
+.item-btn-cart:focus .sign {
   color: #2353eb;
 }
 
@@ -87,14 +87,14 @@
   margin-left: -1px;
 }
 
-@media only screen and (max-width: 768px){
-    .action-col button{
-        margin: 2px;
-    }
+@media only screen and (max-width: 768px) {
+  .action-col button {
+    margin: 2px;
+  }
 
-    .trash-btn {
-        margin-left: 0px;
-    }
+  .trash-btn {
+    margin-left: 0px;
+  }
 }
 
 /* STUDENT HOME */
@@ -105,6 +105,7 @@
   background-color: rgba(39, 56, 101, 0.696);
   color: white;
   margin-top: 0px;
+  border-radius: 10px;
 }
 
 .banner .content {
@@ -118,6 +119,7 @@
   width: 100vw;
   object-fit: cover;
   clip-path: polygon(13% 0, 100% 0%, 100% 100%, 0% 100%);
+  border-radius: 10px;
 }
 
 .banner h1 {
@@ -130,14 +132,14 @@
   font-size: 25px;
 }
 .item-btn {
-    width: 40px;
-    height: 40px;
-    margin: 5px;
-    border-radius: 5px;
-    padding: 6px;
-    font-size: 10px;
-    background-color: #2353eb
-  }
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  border-radius: 5px;
+  padding: 6px;
+  font-size: 10px;
+  background-color: #2353eb;
+}
 .item-btn i {
   color: white;
   font-size: 20px;
@@ -148,10 +150,10 @@
   background-color: rgb(255, 255, 255);
 }
 
-.item-btn:hover .plus{
+.item-btn:hover .plus {
   color: #2353eb;
 }
-.item-btn:focus .plus{
+.item-btn:focus .plus {
   color: #2353eb;
 }
 
@@ -161,10 +163,54 @@
 .app-search .form-control {
   border: none;
   height: 38px;
-  padding-left: 40px;
-  padding-right: 20px;
+  padding: 20px 30px;
   background-color: #cfe2ff;
   -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  .banner {
+    flex-direction: column;
+  }
+  .banner img {
+    height: 50vh;
+    clip-path: initial;
+    width: inherit;
+    margin-top: 50px;
+  }
+  .card.menu-card {
+    margin-top: 350px;
+  }
+  .banner .content {
+    margin-top: 50px;
+    text-align: center;
+    padding-left: 0;
+  }
+  .Student_title__cko1K {
+    text-align: center;
+  }
+  .card {
+    margin-top: 10px;
+  }
+  .card-body.cart-body {
+    width: 100%;
+  }
+  .Student_totalprice__sJJIR {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .col-auto.order-buttons{
+    text-align: center;
+  }
+}
+
+@media screen and (max-width:426px) {
+  .card.menu-card{
+    margin-top: 300px;
+  }
+  .card-body{
+    padding: 0;
+  }
 }

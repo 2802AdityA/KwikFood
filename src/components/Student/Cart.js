@@ -89,7 +89,7 @@ const Cart = (menuList) => {
 				) : ( */}
 
 				<div className="card">
-					<div className="card-body">
+					<div className="card-body cart-body">
 						<table className="table">
 							<thead>
 								<tr className="row table-primary">
@@ -153,7 +153,7 @@ const Cart = (menuList) => {
 				<div className="col-auto mt-3 ms-auto">
 					<h4 className={styles.totalprice}>Total Price - Rs.{cartTotal}</h4>
 				</div>
-				<div className="col-auto">
+				<div className="col-auto order-buttons">
 					<button
 						className="btn btn-danger m-2"
 						onClick={() => {
