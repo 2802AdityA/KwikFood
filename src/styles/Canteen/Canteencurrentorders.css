@@ -1,0 +1,43 @@
+.modal-header{
+    background-color: #2353eb;
+    color: white;
+}
+
+.modal-title{
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.modal button{
+    margin: 10px;
+}
+
+.status{
+    padding-left:150px;
+}
+
+.modal-body button{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.modal-footer button{
+    background-color: #2353eb;
+    color: white;
+}
+
+.table-btn{
+    background-color: #2353eb;
+    color: white;
+    font-weight: 500;
+}
+
+
+.table-btn:hover{
+    background-color: rgb(20, 111, 97);
+    color: white;
+}
+
+.text-dark{
+    font-weight: 500;
+}
