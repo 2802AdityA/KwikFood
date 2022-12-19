@@ -1,0 +1,58 @@
+/* CANTEEN */
+
+.add-menu {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 7px;
+  padding-top: 7px;
+  background-color: rgb(22, 126, 71);
+  color: white;
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+.modal-header {
+  background-color: rgb(70, 161, 113);
+}
+
+.modal-title {
+  font-weight: 700;
+  font-size: 20px;
+  color: aliceblue;
+}
+
+.modal-body label {
+  font-weight: 500;
+}
+.add-menu i {
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+
+button {
+  margin-right: 2px;
+}
+/* READROW */
+.fa-pen {
+  color: rgb(22, 126, 71);
+}
+
+.fa-trash-can {
+  color: brown;
+}
+
+/* READROW */
+
+/* EDIT ROW */
+
+.fa-check {
+  color: rgb(41, 173, 83);
+}
+
+.fa-xmark {
+  color: brown;
+  padding: 2px;
+}
+/* EDITROW */
