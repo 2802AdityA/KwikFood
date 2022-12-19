@@ -6,14 +6,14 @@
   margin-bottom: 20px;
   padding-bottom: 7px;
   padding-top: 7px;
-  background-color: rgb(22, 126, 71);
+  background-color: #2353eb;
   color: white;
   font-weight: 500;
   border-radius: 10px;
 }
 
 .modal-header {
-  background-color: rgb(70, 161, 113);
+  background-color: #2353eb;
 }
 
 .modal-title {
@@ -36,11 +36,11 @@ button {
 }
 /* READROW */
 .fa-pen {
-  color: rgb(22, 126, 71);
+  color: #2353eb;
 }
 
 .fa-trash-can {
-  color: brown;
+  color: rgb(255, 0, 0);
 }
 
 /* READROW */
@@ -48,11 +48,11 @@ button {
 /* EDIT ROW */
 
 .fa-check {
-  color: rgb(41, 173, 83);
+  color: #2353eb;
 }
 
 .fa-xmark {
-  color: brown;
+  color: rgb(255, 0, 0);
   padding: 2px;
 }
 /* EDITROW */

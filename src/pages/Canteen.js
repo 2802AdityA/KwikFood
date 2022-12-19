@@ -232,7 +232,7 @@ const Canteen = () => {
 									<input className="form-control" type="text" placeholder="Quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)}></input>
 								</div>
 								<div class="modal-footer">
-									<button type="submit" className=" btn btn-success">Add Menu</button>
+									<button type="submit" className=" btn btn-outline-primary">Add Menu</button>
 								</div>
 							</form>
 						</div>
