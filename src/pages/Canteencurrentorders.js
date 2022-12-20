@@ -43,6 +43,7 @@ export default function Canteencurrentorders() {
                         <th className="align-middle">Total Amount</th>
                         <th className="align-middle">View Details</th>
                         <th className="align-middle">Order Status</th>
+                        <th className="align-middle">Current Status</th>
                     </tr>
                 </thead>
                 <tbody>
