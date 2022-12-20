@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/Canteen/modifymenu.css"
 
 const EditRow = ({ editMenuData, handleEditMenuChange, handleCancelClick }) => {
 	return (
@@ -38,11 +39,11 @@ const EditRow = ({ editMenuData, handleEditMenuChange, handleCancelClick }) => {
 			</td>
 			<td className="col">
 				<button className="btn" type="submit">
-					Save
+				<i class="fa-solid fa-check"></i>
 				</button>
 
 				<button type="button" className="btn" onClick={handleCancelClick}>
-					Cancel
+				<i class="fa-solid fa-xmark"></i>
 				</button>
 			</td>
 		</tr>
