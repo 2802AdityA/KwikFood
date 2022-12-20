@@ -39,18 +39,7 @@
   width: 125%;
   height: 125%;
 }
-/* .radio-button{
 
-  margin-top: 2rem;
-  padding-left: 20px;
-} */
-.button-div{
-  text-align: center;
-}
-.navigation-button{
-  font-weight: 500;
-  margin: 1rem 1.2rem 0;
-}
 .form-div{
   width: 80%;
 }
@@ -63,9 +52,6 @@
   margin-top: 1.5rem;
 }
 
-.field{
-  padding: 50px;
-}
 
 .button {
   width: 100%;
@@ -132,15 +118,8 @@
   color: rgb(239, 68, 68);
 }
 
-#canteenForm{
-  display: none;
-}
-
 @media only screen and (max-width: 600px){
   .form-div{
     width: 100%;
   }
-}
-@media only screen and (max-width: 768px){
-  
 }
