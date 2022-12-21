@@ -173,7 +173,7 @@ const Canteen = () => {
 			setMenu(newMenu);
 			setEditMenuId(null);
 		} catch (err) {
-			console.log("no");
+			console.log(err);
 		}
 		refreshPage();
 	};
