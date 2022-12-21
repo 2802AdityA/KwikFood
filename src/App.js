@@ -5,6 +5,7 @@ import { NhostApolloProvider } from "@nhost/react-apollo";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
+import Orders from "./components/Orders/Orders";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Dashboard from "./pages/Dashboard";
@@ -23,6 +24,7 @@ function App() {
 					<Routes>
 						<Route path="sign-up" element={<SignUp />} />
 						<Route path="sign-in" element={<SignIn />} />
+						<Route path="orders" element={<Orders />} />
 						<Route
 							path="/"
 							element={
