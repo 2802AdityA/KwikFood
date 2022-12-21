@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import { useOutletContext } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { gql, useQuery, useMutation } from "@apollo/client";
 import ReadRow from "../components/Canteen/ReadRow";
 import EditRow from "../components/Canteen/EditRow";
 import "../styles/Canteen/modifymenu.css";
 
 const GET_MENU = gql`
-	query GetMenu {
-		menu {
-			id
-			name
-			price
-			quantity
-		}
+query showMenu($email: String!){
+	menu(where: {email: {_eq: $email}}){
+	  id
+	  name
+	  price
+	  quantity
+	  email
 	}
+  }
+
 `;
 
 const INSERT_MULTIPLE_ITEMS_MUTATION = gql`
@@ -54,17 +57,22 @@ const DELETE_MENU_ITEM = gql`
 `;
 
 const Canteen = () => {
+	const { user } = useOutletContext();
+	const [email, setEmail] = useState("");
+	useEffect(() => {
+		setEmail(user.email); // eslint-disable-next-line
+	}, []);
+	const { data, error } = useQuery(GET_MENU, { variables: { email } });
 
-	const { error, data } = useQuery(GET_MENU);
+	// console.log(data ? data : error);
 
 	const menuList = data?.menu;
 	const [menu, setMenu] = useState(menuList);
-
 	function refreshPage() {
 		window.location.reload(false);
 	}
 
-	// // add new items to menu
+	// add new items to menu
 	const [insertItem] = useMutation(INSERT_MULTIPLE_ITEMS_MUTATION);
 
 	const [name, setName] = useState("");
@@ -80,7 +88,8 @@ const Canteen = () => {
 					menu: {
 						name: name,
 						price: price,
-						quantity: quantity
+						quantity: quantity,
+						email: email
 					}
 				}
 			})
@@ -164,7 +173,7 @@ const Canteen = () => {
 			setMenu(newMenu);
 			setEditMenuId(null);
 		} catch (err) {
-			console.log(err);
+			console.log("no");
 		}
 		refreshPage();
 	};
@@ -208,30 +217,30 @@ const Canteen = () => {
 	return (
 		<div>
 			<button className="add-menu" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-				<i class="fa-solid fa-plus"></i>Add Menu
+				<i className="fa-solid fa-plus"></i>Add Menu
 			</button>
-			<div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="staticBackdropLabel">ADD MENU</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			<div className="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<div className="modal-dialog modal-dialog-centered">
+					<div className="modal-content">
+						<div className="modal-header">
+							<h5 className="modal-title" id="staticBackdropLabel">ADD MENU</h5>
+							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
-						<div class="modal-body">
+						<div className="modal-body">
 							<form onSubmit={handleSubmit}>
-								<div class="mb-3">
-									<label class="col-form-label">Item Name:</label>
+								<div className="mb-3">
+									<label className="col-form-label">Item Name:</label>
 									<input className="form-control" type="text" placeholder="Item Name" value={name} onChange={(e) => setName(e.target.value)}></input>
 								</div>
-								<div class="mb-3">
-									<label class="col-form-label">Price of Item:</label>`
+								<div className="mb-3">
+									<label className="col-form-label">Price of Item:</label>`
 									<input className="form-control" type="text" placeholder="Price" value={price} onChange={(e) => setPrice(e.target.value)}></input>
 								</div>
-								<div class="mb-3">
-									<label class="col-form-label">Quantity Available:</label>
+								<div className="mb-3">
+									<label className="col-form-label">Quantity Available:</label>
 									<input className="form-control" type="text" placeholder="Quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)}></input>
 								</div>
-								<div class="modal-footer">
+								<div className="modal-footer">
 									<button type="submit" className=" btn btn-outline-primary">Add Menu</button>
 								</div>
 							</form>
