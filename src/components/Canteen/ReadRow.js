@@ -13,14 +13,14 @@ const ReadRow = ({ itemDetails, handleEditClick, handleDeleteClick }) => {
 					type="button"
 					onClick={(e) => handleEditClick(e, itemDetails)}
 				>
-					<i class="fa-solid fa-pen"></i>
+					<i className="fa-solid fa-pen"></i>
 				</button>
 				<button
 					className="btn"
 					type="button"
 					onClick={() => handleDeleteClick(itemDetails.id)}
 				>
-					<i class="fa-solid fa-trash-can"></i>
+					<i className="fa-solid fa-trash-can"></i>
 				</button>
 			</td>
 		</tr>
