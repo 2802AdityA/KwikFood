@@ -157,7 +157,7 @@
   color: #2353eb;
 }
 
-.app-search {
+/* .app-search {
   padding: calc(32px / 2) 0;
 }
 .app-search .form-control {
@@ -168,7 +168,7 @@
   -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 30px;
-}
+} */
 
 @media screen and (max-width: 600px) {
   .banner {

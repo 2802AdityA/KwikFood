@@ -43,9 +43,9 @@ const StudentHome = () => {
 				) : (
 					<div className="card menu-card">
 						<div className="card-body">
-							<form className="app-search">
+							{/* <form className="app-search">
 								<input type="text" className="form-control" placeholder="Search" />
-							</form>
+							</form> */}
 							<table className="table">
 								<thead>
 									<tr className="row table-primary">
