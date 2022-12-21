@@ -117,6 +117,7 @@ export default function Canteencurrentorders() {
                                             <div className="modal-body status">
                                                 <button type="button" className="btn btn-sm btn-outline-success font-size-12">Ready</button>
                                                 <button type="button" className="btn btn-sm btn-outline-warning font-size-12">Preparing</button>
+                                                <button type="button" className="btn btn-sm btn-outline-info font-size-12">Recieved</button>
                                             </div>
                                             <div className="modal-footer">
                                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Update</button>
