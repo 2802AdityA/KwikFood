@@ -25,12 +25,11 @@ const Dashboard = () => {
 	if (loading) return "Loading..";
 	if (error) return `Error! ${error.message}`
 	else {
-		console.log(data);
-		if (data.canteen_email[0].owner_email == email) {
-			return <Canteen />
+		if (data.canteen_email.length === 0) {
+			return <Student />
 		}
 		else {
-			return <Student />
+			return <Canteen />
 		}
 	}
 };
