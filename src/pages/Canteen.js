@@ -6,7 +6,7 @@ import EditRow from "../components/Canteen/EditRow";
 import "../styles/Canteen/modifymenu.css";
 
 const GET_MENU = gql`
-query showMenu($email: String!){
+query showMenu($email: citext!){
 	menu(where: {email: {_eq: $email}}){
 	  id
 	  name
@@ -18,18 +18,20 @@ query showMenu($email: String!){
 
 `;
 
+
+// Query to insert a single item into the menu table in the database 
 const INSERT_MULTIPLE_ITEMS_MUTATION = gql`
-	mutation insert_multiple_items($menu: [menu_insert_input!]!) {
-		insert_menu(objects: $menu) {
-			returning {
-				name
-				price
-				quantity
-			}
-		}
+  mutation insert_a_foodItem($name: String!, $price: numeric!, $quantity: Int!, $email: citext!) {
+	insert_menu_one(object: {name: $name, price: $price, quantity: $quantity, email: $email}) {
+		name
+		price
+		quantity
+		email
 	}
+	  }
 `;
 
+// Query to update a single item in the menu table in the database
 const UPDATE_MENU = gql`
 	mutation update_many_foodItems($id: uuid, $changes: menu_set_input) {
 		update_menu_many(
@@ -44,7 +46,7 @@ const UPDATE_MENU = gql`
 		}
 	}
 `;
-
+// Query to delete a single item from the menu table in the database
 const DELETE_MENU_ITEM = gql`
 	mutation delete_a_foodItem($id: uuid!) {
 		delete_menu_by_pk(id: $id) {
@@ -59,38 +61,43 @@ const DELETE_MENU_ITEM = gql`
 const Canteen = () => {
 	const { user } = useOutletContext();
 	const [email, setEmail] = useState("");
+	// this useEffect is used to set the email of the user to the email state
 	useEffect(() => {
 		setEmail(user.email); // eslint-disable-next-line
 	}, []);
+	// this useQuery is used to get the menu of the canteen from the database
 	const { data, error } = useQuery(GET_MENU, { variables: { email } });
 
-	// console.log(data ? data : error);
-
+	// this is used to get the menu from the database
 	const menuList = data?.menu;
+	// this is used to set the menu state
 	const [menu, setMenu] = useState(menuList);
+
+
 	function refreshPage() {
 		window.location.reload(false);
 	}
 
-	// add new items to menu
+	// insert menu items
 	const [insertItem] = useMutation(INSERT_MULTIPLE_ITEMS_MUTATION);
 
 	const [name, setName] = useState("");
 	const [price, setPrice] = useState("");
 	const [quantity, setQuantity] = useState("");
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
 
+	// this is used to handle the change in the input fields of the form to add a new item to the menu 
+	const handleSubmit = async (e) => {
+
+		e.preventDefault();
+		console.log(name, price, quantity, email)
 		try {
 			await insertItem({
 				variables: {
-					menu: {
-						name: name,
-						price: price,
-						quantity: quantity,
-						email: email
-					}
+					name: name,
+					price: price,
+					quantity: quantity,
+					email: email
 				}
 			})
 		}
@@ -99,41 +106,6 @@ const Canteen = () => {
 		}
 		refreshPage()
 	}
-
-	// const [addMenuData, setAddMenuData] = useState({
-	// 	name: "",
-	// 	price: "",
-	// 	quantity: "",
-	// });
-
-	// const handleAddMenuChange = (event) => {
-	// 	event.preventDefault();
-	// 	const fieldName = event.target.getAttribute("name");
-	// 	const fieldValue = event.target.value;
-	// 	const newMenuData = { ...addMenuData };
-	// 	newMenuData[fieldName] = fieldValue;
-	// 	setAddMenuData(newMenuData);
-	// };
-
-	// const handleAddMenuSubmit = async (event) => {
-	// 	event.preventDefault();
-	// 	try {
-	// 		const newDetail = await insertItem({
-	// 			variables: {
-	// 				menu: {
-	// 					name: addMenuData.name,
-	// 					price: addMenuData.price,
-	// 					quantity: addMenuData.quantity,
-	// 				},
-	// 			},
-	// 		});
-	// 		const newDetails = [...menu, newDetail];
-	// 		setMenu(newDetails);
-	// 	} catch (err) {
-	// 		console.log(err);
-	// 	}
-	// 	refreshPage();
-	// };
 
 	// update menu items
 	const [updateItem] = useMutation(UPDATE_MENU);
@@ -153,7 +125,7 @@ const Canteen = () => {
 		newMenuData[fieldName] = fieldValue;
 		setEditMenuData(newMenuData);
 	};
-
+	// this is used to handle the submit of the form to edit an item in the menu
 	const handleEditMenuSubmit = async (event) => {
 		event.preventDefault();
 		try {
@@ -177,7 +149,7 @@ const Canteen = () => {
 		}
 		refreshPage();
 	};
-
+	// this is used to handle the click of the edit button to edit an item in the menu
 	const handleEditClick = (event, menu) => {
 		event.preventDefault();
 		setEditMenuId(menu.id);
@@ -190,7 +162,7 @@ const Canteen = () => {
 
 		setEditMenuData(menuValues);
 	};
-
+	// this is used to handle the click of the cancel button to cancel the edit of an item in the menu
 	const handleCancelClick = () => {
 		setEditMenuId(null);
 	};
