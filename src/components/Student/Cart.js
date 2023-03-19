@@ -25,6 +25,7 @@ const INSERT_ORDER = gql`
 				amount
 				order_num
 				order_time
+				// canteen_email
 			}
 		}
 	}
@@ -54,6 +55,7 @@ const Cart = (menuList) => {
 	if (isEmpty) return <h1 className={styles.title}>Your Cart is Empty</h1>;
 
 	const handleSubmitOrder = async () => {
+		console.log(items)
 		try {
 			await insertOrder({
 				variables: {
@@ -63,6 +65,7 @@ const Cart = (menuList) => {
 						amount: cartTotal,
 						order_num: order_num,
 						order_time: timestamp,
+						// canteen_email: 
 					},
 				},
 			});
