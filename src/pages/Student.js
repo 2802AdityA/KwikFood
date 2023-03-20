@@ -16,8 +16,10 @@ query MyQuery($_eq: citext! ) {
   }
 `;
 
+// adityasingla.alt@gmail.com
+
 function Student({ email }) {
-	const { error, data } = useQuery(GET_MEN, { variables: { email } });
+	const { error, data } = useQuery(GET_MEN, { variables: { _eq: "muskangarg02270@gmail.com" }});
 	console.log(data);
 	const menuList = data?.menu;
 	console.log(menuList);
