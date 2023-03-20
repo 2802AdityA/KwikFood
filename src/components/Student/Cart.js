@@ -25,7 +25,7 @@ const INSERT_ORDER = gql`
 				amount
 				order_num
 				order_time
-				// canteen_email
+				canteen_email
 			}
 		}
 	}
