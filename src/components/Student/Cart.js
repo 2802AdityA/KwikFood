@@ -84,7 +84,7 @@ const Cart = (menuList) => {
 					</span>
 				</p>
 			</div> */}
-			<h1 className={styles.title}>Your Ordered items <i class="fa-sharp fa-solid fa-cart-shopping"></i><span className="badge badge-warning">{totalUniqueItems}</span></h1>
+			<h1 className={styles.title}>Your Ordered items <i className="fa-sharp fa-solid fa-cart-shopping"></i><span className="badge badge-warning">{totalUniqueItems}</span></h1>
 			<div>
 				{/* {!data ? (
 					"no data"
@@ -152,6 +152,7 @@ const Cart = (menuList) => {
 						</table>
 					</div>
 				</div>
+				<div className="total-order">
 				<div className="col-auto mt-3 ms-auto">
 					<h4 className={styles.totalprice}>Total Price - Rs.{cartTotal}</h4>
 				</div>
@@ -173,6 +174,7 @@ const Cart = (menuList) => {
 					>
 						Place Order
 					</button>
+				</div>
 				</div>
 			</div>
 
