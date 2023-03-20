@@ -75,21 +75,8 @@ const Cart = (menuList) => {
 
 	return (
 		<div className="cart">
-			{/* <div>
-				<h2 className={styles.title}>Order Your Meal</h2>
-				<p className={styles["welcome-text"]}>
-					Welcome, {user?.metadata?.firstName || "stranger"}{" "}
-					<span role="img" alt="hello">
-						👋
-					</span>
-				</p>
-			</div> */}
 			<h1 className={styles.title}>Your Ordered items <i class="fa-sharp fa-solid fa-cart-shopping"></i><span className="badge badge-warning">{totalUniqueItems}</span></h1>
 			<div>
-				{/* {!data ? (
-					"no data"
-				) : ( */}
-
 				<div className="card">
 					<div className="card-body cart-body">
 						<table className="table">
@@ -117,7 +104,7 @@ const Cart = (menuList) => {
 												>
 													<i className="fa fa-minus sign"></i>
 												</button>
-												<button
+												{/* <button
 													className="btn item-btn-cart"
 													onClick={() => {
 														const itemDetail = menuList.menuList?.find(
@@ -125,7 +112,6 @@ const Cart = (menuList) => {
 																return itemDetails.id === item.id;
 															}
 														);
-
 														updateItemQuantity(
 															item.id,
 															item.quantity < itemDetail.quantity
@@ -135,7 +121,26 @@ const Cart = (menuList) => {
 													}}
 												>
 													<i className="fa fa-plus sign"></i>
+												</button> */}
+												<button
+													className="btn item-btn-cart"
+													onClick={() => {
+														console.log(menuList.menuList);
+														const itemDetail = menuList.menuList?.find(itemDetails => {
+															return itemDetails.id === item.id;
+														});
+														console.log(itemDetail);
+														updateItemQuantity(
+															item.id,
+															item.quantity < (itemDetail?.quantity || 0)
+																? item.quantity + 1
+																: item.quantity
+														);
+													}}
+												>
+													<i className="fa fa-plus sign"></i>
 												</button>
+
 												<button
 													className="btn trash-btn"
 													onClick={() => {
