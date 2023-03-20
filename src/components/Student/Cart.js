@@ -75,7 +75,9 @@ const Cart = (menuList) => {
 
 	return (
 		<div className="cart">
+
 			<h1 className={styles.title}>Your Ordered items <i class="fa-sharp fa-solid fa-cart-shopping"></i><span className="badge badge-warning">{totalUniqueItems}</span></h1>
+
 			<div>
 				<div className="card">
 					<div className="card-body cart-body">
@@ -157,6 +159,7 @@ const Cart = (menuList) => {
 						</table>
 					</div>
 				</div>
+				<div className="total-order">
 				<div className="col-auto mt-3 ms-auto">
 					<h4 className={styles.totalprice}>Total Price - Rs.{cartTotal}</h4>
 				</div>
@@ -178,6 +181,7 @@ const Cart = (menuList) => {
 					>
 						Place Order
 					</button>
+				</div>
 				</div>
 			</div>
 
