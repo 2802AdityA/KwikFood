@@ -24,8 +24,8 @@ const StudentHome = () => {
 
 	return (
 		<div className="student-home">
-			<section class="banner">
-				<div class="content">
+			<section className="banner">
+				<div className="content">
 					<h1>Order Your Meal</h1>
 					<p className="call-to-action">
 						Welcome, {user?.metadata?.firstName || "stranger"}{" "}

@@ -84,7 +84,7 @@ const Cart = (menuList) => {
 					</span>
 				</p>
 			</div> */}
-			<h1 className={styles.title}>Your Ordered items <i class="fa-sharp fa-solid fa-cart-shopping"></i><span className="badge badge-warning">{totalUniqueItems}</span></h1>
+			<h1 className={styles.title}>Your Ordered items <i className="fa-sharp fa-solid fa-cart-shopping"></i><span className="badge badge-warning">{totalUniqueItems}</span></h1>
 			<div>
 				{/* {!data ? (
 					"no data"
