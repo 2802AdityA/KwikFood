@@ -25,7 +25,7 @@ const INSERT_ORDER = gql`
 				amount
 				order_num
 				order_time
-				// canteen_email
+				canteen_email
 			}
 		}
 	}
@@ -65,7 +65,6 @@ const Cart = (menuList) => {
 						amount: cartTotal,
 						order_num: order_num,
 						order_time: timestamp,
-						// canteen_email: 
 					},
 				},
 			});
