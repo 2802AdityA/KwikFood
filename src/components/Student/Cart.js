@@ -152,6 +152,7 @@ const Cart = (menuList) => {
 						</table>
 					</div>
 				</div>
+				<div className="total-order">
 				<div className="col-auto mt-3 ms-auto">
 					<h4 className={styles.totalprice}>Total Price - Rs.{cartTotal}</h4>
 				</div>
@@ -173,6 +174,7 @@ const Cart = (menuList) => {
 					>
 						Place Order
 					</button>
+				</div>
 				</div>
 			</div>
 
