@@ -34,10 +34,12 @@ const orderdetails = [
 
 export default function Canteencurrentorders() {
     return (
+        <div className='card'>
+            <div className='card-body'>
         <div className="table-responsive">
             <table className="table align-middle table-nowrap table-check">
                 <thead className="table-secondary">
-                    <tr>
+                    <tr className='table-primary'>
                         <th className="align-middle">Order-ID</th>
                         <th className="align-middle">Billing Name</th>
                         <th className="align-middle">Total Amount</th>
@@ -115,8 +117,8 @@ export default function Canteencurrentorders() {
                                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div className="modal-body status">
+                                            <button type="button" className="btn btn-sm btn-outline-warning font-size-12">Preparing</button>
                                                 <button type="button" className="btn btn-sm btn-outline-success font-size-12">Ready</button>
-                                                <button type="button" className="btn btn-sm btn-outline-warning font-size-12">Preparing</button>
                                                 <button type="button" className="btn btn-sm btn-outline-info font-size-12">Recieved</button>
                                             </div>
                                             <div className="modal-footer">
@@ -131,5 +133,7 @@ export default function Canteencurrentorders() {
                 </tbody>
             </table>
         </div >
+        </div>
+    </div>
     )
 }
