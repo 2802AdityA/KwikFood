@@ -12,14 +12,16 @@ const GET_MENU = gql`
 			id
 			name		
 			price		
-			quantity						}
+			quantity	
+			email					
+		}
 	}
 `;
 
 const Student = () => {
 	const { canteenName } = useParams();
 	const location = useLocation();
-	const email = location.state?.email;
+	const email = location.state?.canteen_email;
 
 	// Get data of menu from canteen email
 	const { data, error } = useQuery(GET_MENU, {
@@ -27,6 +29,7 @@ const Student = () => {
 	});
 
 	const menuList = data?.menu;
+	console.log(menuList);
 	return (
 		<div>
 			<CartProvider>

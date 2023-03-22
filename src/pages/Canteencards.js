@@ -21,9 +21,14 @@ export default function Canteencards() {
 
     const canteenEmail = data?.canteen_email;
 
+    // const cardChoose = (email, name) => {
+    //     navigate(`/canteens/${name}`, { state: { email } });
+    // }
+
     const cardChoose = (email, name) => {
-        navigate(`/canteens/${name}`, { state: { email } });
+        navigate(`/canteens/${name}`, { state: { canteen_email: email, canteen_name: name } });
     }
+
 
     return (
         <div className='row'>

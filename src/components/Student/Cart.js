@@ -1,7 +1,8 @@
 import React from "react";
 import { useOutletContext } from "react-router-dom";
 import { useCart } from "react-use-cart";
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation} from "@apollo/client";
+import { useLocation } from "react-router-dom";
 import styles from "../../styles/pages/Student.module.css";
 // # GET CURRENT ORDERS QUERY
 
@@ -15,24 +16,30 @@ import styles from "../../styles/pages/Student.module.css";
 //   }
 // }
 
+
 //  INSERT CURRENT ORDERS QUERY
 const INSERT_ORDER = gql`
 	mutation insertOrder($current_orders: [current_orders_insert_input!]!) {
 		insert_current_orders(objects: $current_orders) {
 			returning {
-				student_id
-				order
-				amount
-				order_num
-				order_time
-				canteen_email
+			student_id
+			order
+			amount
+			order_num
+			order_time
+			canteen_email
 			}
 		}
 	}
 `;
-const Cart = (menuList) => {
-	const order_num = Math.floor(Math.random() * 90000) + 10000;
 
+
+const Cart = (menuList) => {
+	const location = useLocation();
+	const { canteen_email, canteen_name } = location.state;
+	console.log(canteen_email);
+
+	const order_num = Math.floor(Math.random() * 90000) + 10000;
 	const {
 		isEmpty,
 		totalUniqueItems,
@@ -55,17 +62,20 @@ const Cart = (menuList) => {
 	if (isEmpty) return <h1 className={styles.title}>Your Cart is Empty</h1>;
 
 	const handleSubmitOrder = async () => {
-		console.log(items)
+		console.log(items);
 		try {
 			await insertOrder({
 				variables: {
-					current_orders: {
-						student_id: user?.id,
-						order: items,
-						amount: cartTotal,
-						order_num: order_num,
-						order_time: timestamp,
-					},
+					current_orders: [
+						{
+							student_id: user?.id,
+							order: items,
+							amount: cartTotal,
+							order_num: order_num,
+							order_time: timestamp,
+							canteen_email: canteen_email,
+						},
+					],
 				},
 			});
 		} catch (err) {
@@ -106,24 +116,6 @@ const Cart = (menuList) => {
 												>
 													<i className="fa fa-minus sign"></i>
 												</button>
-												{/* <button
-													className="btn item-btn-cart"
-													onClick={() => {
-														const itemDetail = menuList.menuList?.find(
-															(itemDetails) => {
-																return itemDetails.id === item.id;
-															}
-														);
-														updateItemQuantity(
-															item.id,
-															item.quantity < itemDetail.quantity
-																? item.quantity + 1
-																: item.quantity
-														);
-													}}
-												>
-													<i className="fa fa-plus sign"></i>
-												</button> */}
 												<button
 													className="btn item-btn-cart"
 													onClick={() => {
@@ -160,28 +152,28 @@ const Cart = (menuList) => {
 					</div>
 				</div>
 				<div className="total-order">
-				<div className="col-auto mt-3 ms-auto">
-					<h4 className={styles.totalprice}>Total Price - Rs.{cartTotal}</h4>
-				</div>
-				<div className="col-auto order-buttons">
-					<button
-						className="btn btn-danger m-2"
-						onClick={() => {
-							emptyCart();
-						}}
-					>
-						Empty Cart
-					</button>
-					<button
-						className="btn btn-success m-2"
-						onClick={() => {
-							handleSubmitOrder();
-							emptyCart();
-						}}
-					>
-						Place Order
-					</button>
-				</div>
+					<div className="col-auto mt-3 ms-auto">
+						<h4 className={styles.totalprice}>Total Price - Rs.{cartTotal}</h4>
+					</div>
+					<div className="col-auto order-buttons">
+						<button
+							className="btn btn-danger m-2"
+							onClick={() => {
+								emptyCart();
+							}}
+						>
+							Empty Cart
+						</button>
+						<button
+							className="btn btn-success m-2"
+							onClick={() => {
+								handleSubmitOrder();
+								emptyCart();
+							}}
+						>
+							Place Order
+						</button>
+					</div>
 				</div>
 			</div>
 
