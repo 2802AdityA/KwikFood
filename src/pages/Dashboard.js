@@ -1,9 +1,9 @@
 import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Canteen from "./Canteen";
-import Canteencards from "./Canteencards";
 import { gql, useQuery } from "@apollo/client";
-import Student from "./Student";
+import { useNavigate } from "react-router-dom";
+
+
 const check_canteen_user = gql`
 query canteenUser($email: citext) {
 	canteen_email(where: {owner_email: {_eq: $email}}){
@@ -13,25 +13,33 @@ query canteenUser($email: citext) {
 `
 
 const Dashboard = () => {
-
+	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const { user } = useOutletContext();
+
 	useEffect(() => {
 		setEmail(user.email); // eslint-disable-next-line
 	}, []);
 
 	const { data, loading, error } = useQuery(check_canteen_user, { variables: { email } });
 
+	const check = () => {
+		if (data.canteen_email.length === 0) {
+			navigate("/canteens");
+		}
+		else {
+			navigate("/canteen");
+		}
+	}
+
 	if (loading) return "Loading..";
 	if (error) return `Error! ${error.message}`
 	else {
-		if (data.canteen_email.length === 0) {
-			return <Student email={"adityasingla.2802@gmail.com"} />
-			// return <Canteencards />
-		}
-		else {
-			return <Canteen />
-		}
+		return (
+			<div>
+				{check()}
+			</div>
+		)
 	}
 };
 
