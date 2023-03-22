@@ -3,30 +3,34 @@ import StudentHome from "../components/Student/StudentHome.js";
 import Cart from "../components/Student/Cart";
 import { CartProvider } from "react-use-cart";
 import { gql, useQuery } from "@apollo/client";
+import { useParams, useLocation } from 'react-router-dom';
 
-
-const GET_MEN = gql`
-query MyQuery($_eq: citext! ) {
-	menu(where: {email: {_eq: $_eq}}) {
-	  id
-	  price
-	  quantity
-	  name
+// GET MENU USING CANTEEN EMAIL
+const GET_MENU = gql`
+	query MyQuery($email: citext!) {
+		menu(where: { email: { _eq: $email } }) {
+			id
+			name		
+			price		
+			quantity						}
 	}
-  }
 `;
 
-// adityasingla.alt@gmail.com
+const Student = () => {
+	const { canteenName } = useParams();
+	const location = useLocation();
+	const email = location.state?.email;
 
-function Student({ email }) {
-	const { error, data } = useQuery(GET_MEN, { variables: { _eq: "muskangarg02270@gmail.com" }});
-	console.log(data);
+	// Get data of menu from canteen email
+	const { data, error } = useQuery(GET_MENU, {
+		variables: { email },
+	});
+
 	const menuList = data?.menu;
-	console.log(menuList);
 	return (
 		<div>
 			<CartProvider>
-				<StudentHome />
+				<StudentHome email={email} />
 				<Cart menuList={!error ? menuList : []} />
 			</CartProvider>
 		</div>
