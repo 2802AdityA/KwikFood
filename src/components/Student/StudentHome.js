@@ -14,7 +14,9 @@ const GET_MENU = gql`
 			id
 			name		
 			price		
-			quantity						}
+			quantity		
+			email
+		}
 	}
 `;
 
