@@ -31,7 +31,11 @@ const INSERT_ORDER = gql`
 	}
 `;
 const Cart = (menuList) => {
-	const order_num = Math.floor(Math.random() * 90000) + 10000;
+	// console.log(menuList.menuList[0].email)
+	const generateNum = () => {
+		const order_num = Math.floor(Math.random() * 90000) + 10000;
+		return order_num;
+	};
 
 	const {
 		isEmpty,
@@ -44,7 +48,6 @@ const Cart = (menuList) => {
 		removeItem,
 		emptyCart,
 	} = useCart();
-
 	const date = new Date();
 	var timestamp_with_time_zone = date.toISOString();
 	var timestamp = timestamp_with_time_zone.slice(0, 19);
@@ -53,18 +56,23 @@ const Cart = (menuList) => {
 	const { user } = useOutletContext();
 
 	if (isEmpty) return <h1 className={styles.title}>Your Cart is Empty</h1>;
-
-	const handleSubmitOrder = async () => {
-		console.log(items)
+	const handleInsertOrder = async (items) => {
+		// console.log(items);
+		// Calculate the price of the order
+		const orderPrice = items.reduce((acc, item) => {
+			return acc + item.price * item.quantity;
+		}, 0);
+		// console.log(orderPrice);
 		try {
 			await insertOrder({
 				variables: {
 					current_orders: {
 						student_id: user?.id,
 						order: items,
-						amount: cartTotal,
-						order_num: order_num,
+						amount: orderPrice,
+						order_num: generateNum(),
 						order_time: timestamp,
+						canteen_email: items[0].email,
 					},
 				},
 			});
@@ -73,10 +81,31 @@ const Cart = (menuList) => {
 		}
 	};
 
+	const handleSubmitOrder = async () => {
+		// console.log(items)
+		// Create a new array to take only the items which are from a particular canteen and keep removing that particular order from the items array while the items array is not empty.
+		// Then send the order to the database and repeat the process until the items array is empty.
+		while (items.length > 0) {
+			let canteenItems = [];
+			let canteenEmail = items[0].email;
+			for (let i = 0; i < items.length; i++) {
+				if (items[i].email === canteenEmail) {
+					canteenItems.push(items[i]);
+					items.splice(i, 1);
+					i--;
+				}
+			}
+			// console.log(canteenItems);
+			await handleInsertOrder(canteenItems);
+		}
+
+
+	};
+
 	return (
 		<div className="cart">
 
-			<h1 className={styles.title}>Your Ordered items <i class="fa-sharp fa-solid fa-cart-shopping"></i><span className="badge badge-warning">{totalUniqueItems}</span></h1>
+			<h1 className={styles.title}>Your Ordered items <i className="fa-sharp fa-solid fa-cart-shopping"></i><span className="badge badge-warning">{totalUniqueItems}</span></h1>
 
 			<div>
 				<div className="card">
@@ -106,28 +135,10 @@ const Cart = (menuList) => {
 												>
 													<i className="fa fa-minus sign"></i>
 												</button>
-												{/* <button
-													className="btn item-btn-cart"
-													onClick={() => {
-														const itemDetail = menuList.menuList?.find(
-															(itemDetails) => {
-																return itemDetails.id === item.id;
-															}
-														);
-														updateItemQuantity(
-															item.id,
-															item.quantity < itemDetail.quantity
-																? item.quantity + 1
-																: item.quantity
-														);
-													}}
-												>
-													<i className="fa fa-plus sign"></i>
-												</button> */}
+
 												<button
 													className="btn item-btn-cart"
 													onClick={() => {
-														console.log(menuList.menuList);
 														const itemDetail = menuList.menuList?.find(itemDetails => {
 															return itemDetails.id === item.id;
 														});
@@ -160,28 +171,28 @@ const Cart = (menuList) => {
 					</div>
 				</div>
 				<div className="total-order">
-				<div className="col-auto mt-3 ms-auto">
-					<h4 className={styles.totalprice}>Total Price - Rs.{cartTotal}</h4>
-				</div>
-				<div className="col-auto order-buttons">
-					<button
-						className="btn btn-danger m-2"
-						onClick={() => {
-							emptyCart();
-						}}
-					>
-						Empty Cart
-					</button>
-					<button
-						className="btn btn-success m-2"
-						onClick={() => {
-							handleSubmitOrder();
-							emptyCart();
-						}}
-					>
-						Place Order
-					</button>
-				</div>
+					<div className="col-auto mt-3 ms-auto">
+						<h4 className={styles.totalprice}>Total Price - Rs.{cartTotal}</h4>
+					</div>
+					<div className="col-auto order-buttons">
+						<button
+							className="btn btn-danger m-2"
+							onClick={() => {
+								emptyCart();
+							}}
+						>
+							Empty Cart
+						</button>
+						<button
+							className="btn btn-success m-2"
+							onClick={() => {
+								handleSubmitOrder();
+								emptyCart();
+							}}
+						>
+							Place Order
+						</button>
+					</div>
 				</div>
 			</div>
 

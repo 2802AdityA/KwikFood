@@ -9,6 +9,7 @@ import { useParams, useLocation } from 'react-router-dom';
 const GET_MENU = gql`
 	query MyQuery($email: citext!) {
 		menu(where: { email: { _eq: $email } }) {
+			email
 			id
 			name		
 			price		
@@ -25,7 +26,7 @@ const Student = () => {
 	const { data, error } = useQuery(GET_MENU, {
 		variables: { email },
 	});
-
+	// console.log(data);
 	const menuList = data?.menu;
 	return (
 		<div>
