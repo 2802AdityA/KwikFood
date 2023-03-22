@@ -9,6 +9,9 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
+import Canteencards from "./pages/Canteencards";
+import Student from "./pages/Student";
+import Canteen from "./pages/Canteen";
 
 const nhost = new NhostClient({
 	subdomain: process.env.REACT_APP_NHOST_SUBDOMAIN,
@@ -34,6 +37,9 @@ function App() {
 							<Route index element={<Dashboard />} />
 
 							<Route path="profile" element={<Profile />} />
+							<Route path="canteens" Component={Canteencards} />
+							<Route path="canteens/:canteenName" Component={Student} />
+							<Route path="canteen" Component={Canteen} />
 						</Route>
 					</Routes>
 				</BrowserRouter>
