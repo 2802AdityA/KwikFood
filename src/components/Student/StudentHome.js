@@ -1,23 +1,29 @@
 import React from "react";
-import { useOutletContext } from "react-router-dom";
-// eslint-disable-next-line
-import styles from "../../styles/pages/Student.module.css";
 import { gql, useQuery } from "@apollo/client";
+import { useOutletContext } from "react-router-dom";
+
+// eslint-disable-next-line
+import "../../styles/pages/Student.module.css";
+
 import StudentMenu from "./StudentMenu";
 import "../../styles/Student/StudentHome.css";
+
 const GET_MENU = gql`
-	query GetMenu {
-		menu {
+	query MyQuery($email: citext!) {
+		menu(where: { email: { _eq: $email } }) {
 			id
-			name
-			price
-			quantity
-		}
+			name		
+			price		
+			quantity						}
 	}
 `;
 
-const StudentHome = () => {
-	const { error, data } = useQuery(GET_MENU);
+const StudentHome = (props) => {
+	const email = props.email;
+
+	const { data, error } = useQuery(GET_MENU, {
+		variables: { email },
+	});
 	const menuList = data?.menu;
 
 	const { user } = useOutletContext();
