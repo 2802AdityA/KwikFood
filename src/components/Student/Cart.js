@@ -3,17 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import { useCart } from "react-use-cart";
 import { gql, useMutation } from "@apollo/client";
 import styles from "../../styles/pages/Student.module.css";
-// # GET CURRENT ORDERS QUERY
 
-// query MyQuery {
-//   current_orders {
-//     amount
-//     order
-//     order_num
-//     order_time
-//     student_id
-//   }
-// }
 
 //  INSERT CURRENT ORDERS QUERY
 const INSERT_ORDER = gql`

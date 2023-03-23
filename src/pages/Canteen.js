@@ -4,6 +4,7 @@ import { gql, useQuery, useMutation } from "@apollo/client";
 import ReadRow from "../components/Canteen/ReadRow";
 import EditRow from "../components/Canteen/EditRow";
 import "../styles/Canteen/modifymenu.css";
+import CanteenCurrentOrders from "./CanteenCurrentOrders";
 
 const GET_MENU = gql`
 query showMenu($email: citext!){
@@ -46,6 +47,7 @@ const UPDATE_MENU = gql`
 		}
 	}
 `;
+
 // Query to delete a single item from the menu table in the database
 const DELETE_MENU_ITEM = gql`
 	mutation delete_a_foodItem($id: uuid!) {
@@ -59,6 +61,7 @@ const DELETE_MENU_ITEM = gql`
 `;
 
 const Canteen = () => {
+
 	const { user } = useOutletContext();
 	const [email, setEmail] = useState("");
 	// this useEffect is used to set the email of the user to the email state
@@ -260,6 +263,7 @@ const Canteen = () => {
 							</tbody>
 						</table>
 					</form>
+					<CanteenCurrentOrders />
 				</>
 			)}
 		</div>
