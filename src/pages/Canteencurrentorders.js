@@ -60,11 +60,16 @@ export default function Canteencurrentorders() {
                 order_status: order_status,
             },
         });
-        window.location.reload();
         if (order_status === "Received") {
             deleteOrder(order_num);
-            window.location.reload();
         }
+        // Reload the page after updating the order status
+        reloadPage();
+    };
+    // Create a async function to reload the page
+    const reloadPage = async () => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        window.location.reload();
     };
 
 
