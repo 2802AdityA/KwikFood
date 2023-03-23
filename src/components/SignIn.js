@@ -1,5 +1,4 @@
 import "../styles/components/SignIn.css";
-import logo from "../assets/KwikFoodLogo.png"
 import { useSignInEmailPassword } from "@nhost/react";
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
@@ -10,7 +9,6 @@ import Spinner from "./Spinner";
 const SignIn = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [canteenEmail, setcanteenEmail] = useState("");
 
 	const {
 		signInEmailPassword,
@@ -37,7 +35,7 @@ const SignIn = () => {
 		<div className="container">
 			<div className="card">
 				<div className="logo-wrapper">
-					<img src={logo} alt="logo" />
+					<img src={process.env.PUBLIC_URL + "logo.png"} alt="logo" />
 				</div>
 
 				{needsEmailVerification ? (
