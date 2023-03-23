@@ -13,7 +13,7 @@ import Canteencards from "./pages/Canteencards";
 import Student from "./pages/Student";
 import Canteen from "./pages/Canteen";
 
-import Canteencurrentorders from "./pages/Canteencurrentorders";
+import CanteenCurrentOrders from "./pages/CanteenCurrentOrders";
 import Orders from "./pages/Orders";
 
 
@@ -45,7 +45,7 @@ function App() {
 							<Route path="canteens/:canteenName" Component={Student} />
 							<Route path="canteen" Component={Canteen} />
 
-							<Route path="canteenorders" Component={Canteencurrentorders} />
+							<Route path="canteenorders" Component={CanteenCurrentOrders} />
 
 							<Route path="orders" Component={Orders} />
 
