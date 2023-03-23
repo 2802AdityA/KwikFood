@@ -13,6 +13,10 @@ import Canteencards from "./pages/Canteencards";
 import Student from "./pages/Student";
 import Canteen from "./pages/Canteen";
 
+import Canteencurrentorders from "./pages/Canteencurrentorders";
+import Orders from "./pages/Orders";
+
+
 const nhost = new NhostClient({
 	subdomain: process.env.REACT_APP_NHOST_SUBDOMAIN,
 	region: process.env.REACT_APP_NHOST_REGION,
@@ -40,6 +44,11 @@ function App() {
 							<Route path="canteens" Component={Canteencards} />
 							<Route path="canteens/:canteenName" Component={Student} />
 							<Route path="canteen" Component={Canteen} />
+
+							<Route path="canteenorders" Component={Canteencurrentorders} />
+
+							<Route path="orders" Component={Orders} />
+
 						</Route>
 					</Routes>
 				</BrowserRouter>
