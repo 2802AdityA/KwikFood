@@ -228,7 +228,7 @@ const Canteen = () => {
 					<form onSubmit={handleEditMenuSubmit}>
 						<table className="table">
 							<thead>
-								<tr className="row table-secondary">
+								<tr className="row" style={{ backgroundColor: "#df929ad4" }}>
 									<th className="col">Item Name</th>
 									<th className="col">Price</th>
 									<th className="col">Quantity</th>
