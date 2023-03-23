@@ -4,7 +4,7 @@ import { gql, useQuery, useMutation } from "@apollo/client";
 import ReadRow from "../components/Canteen/ReadRow";
 import EditRow from "../components/Canteen/EditRow";
 import "../styles/Canteen/modifymenu.css";
-import Canteencurrentorders from "./Canteencurrentorders";
+import CanteenCurrentOrders from "./CanteenCurrentOrders";
 
 const GET_MENU = gql`
 query showMenu($email: citext!){
@@ -263,7 +263,7 @@ const Canteen = () => {
 							</tbody>
 						</table>
 					</form>
-					<Canteencurrentorders />
+					<CanteenCurrentOrders />
 				</>
 			)}
 		</div>
