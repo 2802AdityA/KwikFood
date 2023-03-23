@@ -32,18 +32,17 @@ const StudentHome = (props) => {
 
 	return (
 		<div className="student-home">
+			<h1 className="heading">Order Your Meal</h1>
+			<p className="call-to-action">
+				Welcome, {user?.metadata?.firstName || "stranger"}{" "}
+			</p>
 			<section className="banner">
 				<div className="content">
-					<h1>Order Your Meal</h1>
-					<p className="call-to-action">
-						Welcome, {user?.metadata?.firstName || "stranger"}{" "}
-						<span role="img" alt="hello">
-							👋
-						</span>
-					</p>
+					<img  src="https://img.freepik.com/free-photo/club-sandwich-with-side-french-fries_140725-1744.jpg?w=900&t=st=1679598724~exp=1679599324~hmac=47700de77a416564e09446366ee19e7f9d2c28c0dbf49352f777e079c2706a3c"/>
 				</div>
+				
 				{/* eslint-disable-next-line */}
-				<img src="https://images.unsplash.com/photo-1460306855393-0410f61241c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format" />
+				<img  className="food" src="https://images.unsplash.com/photo-1460306855393-0410f61241c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format" />
 			</section>
 			<div>
 				{!data ? (
@@ -56,7 +55,7 @@ const StudentHome = (props) => {
 							</form> */}
 							<table className="table">
 								<thead>
-									<tr className="row table-primary">
+									<tr className="row" style={{ backgroundColor: "#df929ad4" }}>
 										<th className="col">Item Name</th>
 										<th className="col">Price</th>
 										<th className="col">Available Quantity</th>
