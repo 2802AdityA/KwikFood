@@ -105,14 +105,14 @@ const Cart = (menuList) => {
 	return (
 		<div className="cart">
 
-			<h1 className={styles.title}>Your Ordered items <i className="fa-sharp fa-solid fa-cart-shopping"></i><span className="badge badge-warning">{totalUniqueItems}</span></h1>
+			<h1>Your Ordered items <i className="fa-sharp fa-solid fa-cart-shopping"></i><span className="badge badge-warning">{totalUniqueItems}</span></h1>
 
 			<div>
 				<div className="card">
 					<div className="card-body cart-body">
 						<table className="table">
 							<thead>
-								<tr className="row table-primary">
+								<tr className="row " style={{backgroundColor:"#df929ad4"}}>
 									<th className="col">Item Name</th>
 									<th className="col">Price</th>
 									<th className="col">Quantity</th>
@@ -122,7 +122,7 @@ const Cart = (menuList) => {
 							<tbody>
 								{items.map((item, index) => {
 									return (
-										<tr className="row" key={index}>
+										<tr className="row" key={index} >
 											<td className="col">{item.name}</td>
 											<td className="col">{item.price}</td>
 											<td className="col">{item.quantity}</td>
