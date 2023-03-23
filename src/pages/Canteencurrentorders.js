@@ -39,7 +39,7 @@ export default function Canteencurrentorders() {
                 <div className="table-responsive">
                     <table className="table align-middle table-nowrap table-check">
                         <thead className="table-secondary">
-                            <tr className='table-primary'>
+                            <tr className='table' style={{ backgroundColor: "#df929ad4" }}>
                                 <th className="align-middle">Order-ID</th>
                                 <th className="align-middle">Billing Name</th>
                                 <th className="align-middle">Total Amount</th>
@@ -68,7 +68,7 @@ export default function Canteencurrentorders() {
                                                     <div className="modal-body">
                                                         <table className="table align-middle table-nowrap">
                                                             <thead>
-                                                                <tr>
+                                                                <tr style={{ backgroundColor: "#df929ad4" }}>
                                                                     <th scope="col">Item</th>
                                                                     <th scope="col">Price</th>
                                                                 </tr>
