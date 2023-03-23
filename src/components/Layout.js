@@ -1,5 +1,8 @@
 import styles from "../styles/components/Layout.module.css";
 
+import logo from "../assets/KwikFoodLogo.png";
+
+
 import { useSignOut, useUserId } from "@nhost/react";
 import { gql, useQuery } from "@apollo/client";
 import { Fragment } from "react";
@@ -56,7 +59,7 @@ const Layout = () => {
 			<header className={styles.header}>
 				<div className={styles["header-container"]}>
 					<Link to="/">
-						<img src={process.env.PUBLIC_URL + "logo.svg"} alt="logo" />
+						<img className={styles.logo}  src={logo} alt="logo" />
 					</Link>
 
 					<Menu as="div" className={styles.menu}>

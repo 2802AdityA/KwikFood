@@ -1,5 +1,5 @@
 import "../styles/components/SignIn.css";
-import logo from "../styles/logo.jpg"
+import logo from "../assets/KwikFoodLogo.png"
 import { useSignInEmailPassword } from "@nhost/react";
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
