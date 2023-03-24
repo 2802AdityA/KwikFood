@@ -112,6 +112,14 @@ export default function Canteencurrentorders() {
                                 <tbody>
                                     {!error ? (
                                         orderList.map((order) => {
+                                            let statusColor = '';
+                                            if (order.order_status === 'Preparing') {
+                                                statusColor = 'warning';
+                                            } else if (order.order_status === 'Ready') {
+                                                statusColor = 'success';
+                                            } else {
+                                                statusColor = 'danger';
+                                            }
                                             return (
                                                 <tr key={order.order_num}>
                                                     <td className="text-body fw-bold">{order.order_num}</td>
@@ -245,6 +253,7 @@ export default function Canteencurrentorders() {
                                                                             type="button"
                                                                             className="btn btn-sm btn-outline-warning font-size-12"
                                                                             data-bs-dismiss="modal"
+                                                                            style={{ color: "black" }}
                                                                             onClick={() => updateStatus(order.order_num, "Preparing")}
                                                                         >
                                                                             Preparing
@@ -259,7 +268,7 @@ export default function Canteencurrentorders() {
                                                                         </button>
                                                                         <button
                                                                             type="button"
-                                                                            className="btn btn-sm btn-outline-info font-size-12"
+                                                                            className="btn btn-sm btn-outline-primary font-size-12"
                                                                             data-bs-dismiss="modal"
                                                                             onClick={() => updateStatus(order.order_num, "Received")}
                                                                         >
@@ -270,7 +279,10 @@ export default function Canteencurrentorders() {
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td>{order.order_status}</td>
+                                                    {/* <td className={statusColor} style={{color:"white"}}>{order.order_status}</td> */}
+                                                    <td>
+                                                    <span class={`badge rounded-pill text-bg-${statusColor} badge-font-size-25`}>{order.order_status}</span>
+                                                    </td>
                                                 </tr>
                                             );
                                         })
