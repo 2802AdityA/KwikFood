@@ -61,6 +61,10 @@ const Layout = () => {
 					<Link to="/">
 						<img className={styles.logo} src={process.env.PUBLIC_URL + "layoutLogo.png"} alt="logo" />
 					</Link>
+					<div className={styles.buttons}>
+						<Link to="/" className={styles.linkitem}>Canteen</Link>
+						<Link to="/" className={styles.linkitem}>Current Orders</Link>
+					</div>
 
 					<Menu as="div" className={styles.menu}>
 						<Menu.Button className={styles["menu-button"]}>

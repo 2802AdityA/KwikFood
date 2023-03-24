@@ -56,6 +56,29 @@
   width: 6rem;
 }
 
+.buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -750px;
+  padding-bottom: 12px;
+  margin-top: 0px;
+}
+
+.linkitem{
+  color: white;
+  margin-right: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.linkitem:hover{
+  color: #542424;
+}
+
 .menu {
   position: relative;
   z-index: 50;
