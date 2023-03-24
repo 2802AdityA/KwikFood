@@ -191,6 +191,7 @@ const Canteen = () => {
 
 	return (
 		<div>
+			<h1 className="today-menu">MENU</h1>
 			<button className="add-menu" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 				<i className="fa-solid fa-plus"></i>Add Menu
 			</button>
@@ -229,39 +230,43 @@ const Canteen = () => {
 			) : (
 				<>
 					<form onSubmit={handleEditMenuSubmit}>
-						<table className="table">
-							<thead>
-								<tr className="row table-secondary">
-									<th className="col">Item Name</th>
-									<th className="col">Price</th>
-									<th className="col">Quantity</th>
-									<th className="col">Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								{!error
-									? menuList?.map((itemDetails) => {
-										return (
-											<>
-												{editMenuId === itemDetails.id ? (
-													<EditRow
-														editMenuData={editMenuData}
-														handleEditMenuChange={handleEditMenuChange}
-														handleCancelClick={handleCancelClick}
-													/>
-												) : (
-													<ReadRow
-														itemDetails={itemDetails}
-														handleEditClick={handleEditClick}
-														handleDeleteClick={handleDeleteClick}
-													/>
-												)}
-											</>
-										);
-									})
-									: "Something went wrong, Check back after sometime "}
-							</tbody>
-						</table>
+						<div className="card">
+							<div className="card-body">
+									<table className="table align-middle table-nowrap table-check">
+										<thead>
+											<tr className="row" style={{ backgroundColor: "#df929ad4" }}>
+												<th className="col">Item Name</th>
+												<th className="col">Price</th>
+												<th className="col">Quantity</th>
+												<th className="col">Actions</th>
+											</tr>
+										</thead>
+										<tbody>
+											{!error
+												? menuList?.map((itemDetails) => {
+													return (
+														<>
+															{editMenuId === itemDetails.id ? (
+																<EditRow
+																	editMenuData={editMenuData}
+																	handleEditMenuChange={handleEditMenuChange}
+																	handleCancelClick={handleCancelClick}
+																/>
+															) : (
+																<ReadRow
+																	itemDetails={itemDetails}
+																	handleEditClick={handleEditClick}
+																	handleDeleteClick={handleDeleteClick}
+																/>
+															)}
+														</>
+													);
+												})
+												: "Something went wrong, Check back after sometime "}
+										</tbody>
+									</table>
+							</div>
+						</div>
 					</form>
 					<CanteenCurrentOrders />
 				</>

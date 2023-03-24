@@ -8,7 +8,7 @@
 }
 
 .modal-header{
-    background-color: #2353eb;
+    background-color:#b91828b8;
     color: white;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .status{
-    padding-left:20px;
+    padding-left:100px;
 }
 
 .modal-body button{
@@ -31,12 +31,12 @@
 }
 
 .modal-footer button{
-    background-color: #2353eb;
+    background-color: #b91828b8;
     color: white;
 }
 
 .table-btn{
-    background-color: #2353eb;
+    background-color:#b91828b8;
     color: white;
     font-weight: 500;
 }
@@ -49,4 +49,8 @@
 
 .text-dark{
     font-weight: 500;
+}
+
+.badge{
+    font-size: 0.85rem;
 }

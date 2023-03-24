@@ -13,8 +13,7 @@
   background-clip: border-box;
   border: 0 solid #8f8383;
   border-radius: 0.25rem;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 10px;
   margin-bottom: 50px;
   margin-top: 20px;
   border-radius: 10px;
@@ -33,7 +32,7 @@
   margin: 5px;
   border-radius: 5px;
   font-size: 10px;
-  background-color: #2353eb;
+  background-color:#b91828b8;
   padding-right: 2px;
   padding-left: 2px;
 }
@@ -43,10 +42,10 @@
 }
 
 .item-btn-cart:hover .sign {
-  color: #2353eb;
+  color: #b91828b8;
 }
 .item-btn-cart:focus .sign {
-  color: #2353eb;
+  color: #b91828b8;
 }
 
 .item-btn-cart i {
@@ -69,7 +68,7 @@
 }
 
 .trash-btn i {
-  color: rgb(219, 72, 72);
+  color: #770e18;
   font-weight: 900;
   margin-bottom: 2px;
 }
@@ -108,28 +107,42 @@
   border-radius: 10px;
 }
 
-.banner .content {
-  min-width: 270px;
-  width: 100%;
-  margin-top: 30px;
-  padding-left: 40px;
-}
-
-.banner img {
-  width: 100vw;
+.banner .content img {
+  height: 200px;
+  width: 650px;
+  clip-path:polygon(0% 0%, 100% 0%, 92% 100%, 0% 100%);
   object-fit: cover;
-  clip-path: polygon(13% 0, 100% 0%, 100% 100%, 0% 100%);
   border-radius: 10px;
+  margin: 0;
 }
 
-.banner h1 {
+.banner .food {
+  width: 80vw;
+  clip-path: polygon(13% 0, 100% 0%, 100% 100%, 0% 100%);
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 0;
+  margin-left: -90px;
+}
+
+h1 {
+  font-size: 50px;
+  color: rgb(160, 29, 38);
+  text-align: center;
+  font-weight: 700;
+}
+
+.cart h1{
+  color: #000;
   font-size: 40px;
-  color: rgb(24, 24, 74);
   font-weight: 700;
 }
 .call-to-action {
-  font-weight: 500;
-  font-size: 25px;
+  font-weight: 700;
+  font-size: 40px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
 }
 .item-btn {
   width: 40px;
@@ -138,7 +151,7 @@
   border-radius: 5px;
   padding: 6px;
   font-size: 10px;
-  background-color: #2353eb;
+  background-color: #b91828b8;
 }
 .item-btn i {
   color: white;
@@ -151,10 +164,10 @@
 }
 
 .item-btn:hover .plus {
-  color: #2353eb;
+  color: #b91828b8;
 }
 .item-btn:focus .plus {
-  color: #2353eb;
+  color:#b91828b8;
 }
 
 /* .app-search {
