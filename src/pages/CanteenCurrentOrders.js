@@ -91,6 +91,7 @@ export default function Canteencurrentorders() {
 
     return (
         <div>
+            <h1 className="today-menu">CURRENT ORDERS</h1>
             {!data ? (
                 "no data"
             ) : (

@@ -1,9 +1,19 @@
 /* CANTEEN */
 
+.card{
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.today-menu{
+  font-size: 50px;
+}
+
 .add-menu {
   padding-left: 15px;
   padding-right: 15px;
-  margin-bottom: 20px;
+  margin-top: 25px;
+  margin-bottom: 15px;
   padding-bottom: 7px;
   padding-top: 7px;
   background-color: #b91828b8;
