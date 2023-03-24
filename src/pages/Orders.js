@@ -14,20 +14,6 @@ query currentOrders($order_num: numeric!) {
 }
 `;
 
-// function to load razorpay script
-function loadScript(src) {
-  return new Promise(resolve => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.onload = () => {
-      resolve(true);
-    };
-    script.onerror = () => {
-      resolve(false);
-    };
-    document.body.appendChild(script);
-  })
-}
 
 const Orders = () => {
 
@@ -49,81 +35,44 @@ const Orders = () => {
     setEmail(user.email); // eslint-disable-next-line
   }, []);
 
-  async function displayRazorpay() {
-    const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
 
-    if (!res) {
-      alert('Razorpay SDK failed to load. Are you online?');
-      return;
-    }
-
-    // send amount to server side 
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ amount: amountValue })
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const options = {
+      key: 'rzp_test_oEOyciCXCmfDBS',
+      key_secret: 'j9iW5PbgeqhhWNmzHoLXl8n2',
+      amount: amountValue * 100,
+      currency: 'INR',
+      name: 'KWIK FOOD',
+      description: 'Transaction for Kwik Food',
+      // image: 'https://example.com/your_logo',
+      handler: function (response) {
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature)
+      },
+      prefill: {
+        name: `${fname} ${lname}`,
+        email: email,
+        contact: '9000090000'
+      },
+      notes: {
+        address: 'Razorpay Corporate Office'
+      },
+      theme: {
+        color: '#3399cc'
+      }
     };
-
-    const data = await fetch(`http://localhost:5000/razorpay/`, requestOptions).then((t) => t.json());
-
-
-    // const options = {
-    //   "key": "rzp_test_oEOyciCXCmfDBS",
-    //   currency: data.currency,
-    //   amount: amountValue,
-    //   order_id: data.id,
-    //   "name": "KWIK FOOD",
-    //   "description": "Transaction for Kwik Food",
-    //   // "image": "https://example.com/your_logo",
-    //   "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
-    //   "prefill": {
-    //     "name": `${fname} ${lname}`,
-    //     "email": email,
-    //     "contact": "9000090000"
-    //   },
-    //   "notes": {
-    //     "address": "Razorpay Corporate Office"
-    //   },
-    //   "theme": {
-    //     "color": "#3399cc"
-    //   }
-    // };
-    // const paymentObject = new window.Razorpay(options);
-    // paymentObject.open();
-
-
-      const options = {
-        "key": "rzp_test_oEOyciCXCmfDBS",
-        currency: data.currency,
-        amount: amountValue,
-        order_id: data.id,
-        "name": "KWIK FOOD",
-        "description": "Transaction for Kwik Food",
-        // "image": "https://example.com/your_logo",
-        "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
-        "prefill": {
-          "name": `${fname} ${lname}`,
-          "email": email,
-          "contact": "9000090000"
-        },
-        "notes": {
-          "address": "Razorpay Corporate Office"
-        },
-        "theme": {
-          "color": "#3399cc"
-        }
-      };
-      const paymentObject = new window.Razorpay(options);
-      paymentObject.open();
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open();
   }
 
+    return (
+      <div className='orders-container'>
+        {orders.map(order => <Order key={order.id} order={order} />)}
+        <button type="button" onClick={handleSubmit}>Pay With Razorpay</button>
+      </div>
+    )
+  }
 
-  return (
-    <div className='orders-container'>
-      {orders.map(order => <Order key={order.id} order={order} />)}
-      <button type="button" onClick={displayRazorpay}>Pay With Razorpay</button>
-    </div>
-  )
-}
-
-export default Orders;
+  export default Orders;
