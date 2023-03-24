@@ -1,20 +1,16 @@
 
 //svg imports
-import delivered from '../assets/delivered.svg';
 import preparing from '../assets/preparing.svg';
-import ofd from '../assets/outfordelivery.svg';
-
+import placed from "../assets/placed.svg";
+import ready from "../assets/ready.svg"
 //stylesheet import
 import '../styles/components/Order.css';
 
-const Order = ({ order }) => {
-
+const Order = ({ order: orders }) => {
 
 
     //conditional logic for status display
-    const orderStatusURL = order.orderStatus === 'preparing' ? preparing : (order.orderStatus === 'out-for-delivery' ? ofd : delivered);
-
-
+    const orderStatusURL = orders.order_status === 'Preparing' ? preparing : (orders.order_status === 'Ready' ? ready : placed);
 
     return (
         <div className='order-container' >
@@ -25,23 +21,28 @@ const Order = ({ order }) => {
 
                             <th scope="col">Item</th>
                             <th scope="col">Quantity</th>
+                            <th scope="col">Rate</th>
                             <th scope="col">Price</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        {order.items.map((item, index) => {
-                            <tr key={item.id}>
-                                <td>{item.name}</td>
-                                <td>{item.quantity}</td>
-                                <td>{item.price}</td>
-                            </tr>
+                        {orders.order.map((item, index) => {
+                            return (
+                                <tr key={item.id}>
+                                    <td>{item.name}</td>
+                                    <td>{item.quantity}</td>
+                                    <td>{item.price}</td>
+                                    <td>{item.price * item.quantity}</td>
+                                </tr>
+                            )
                         })}
 
                         <tr>
-                            <th scope='row' colSpan='2'>Total</th>
+                            <th scope='row' colSpan='3'>Total</th>
                             <td>
-                                {order.items.reduce((accumulator, item) => accumulator + item.price, 0)}
+                                {orders.amount}
+                                {/* {order.amount.reduce((accumulator, item) => accumulator + item.price, 0)} */}
                             </td>
                         </tr>
                         <tr>
@@ -49,7 +50,7 @@ const Order = ({ order }) => {
                         </tr>
                         <tr>
                             <th scope='row' colSpan='2'>Order Status</th>
-                            <td>{order.orderStatus}</td>
+                            <td>{orders.order_status}</td>
                         </tr>
                     </tbody>
                 </table>
