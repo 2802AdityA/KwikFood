@@ -1,4 +1,4 @@
-.card {
+.menu-card {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -195,8 +195,9 @@ h1 {
 @media screen and (max-width: 600px) {
   .banner {
     flex-direction: column;
+    display: none;
   }
-  .banner img {
+  .banner .content img {
     height: 50vh;
     clip-path: initial;
     width: inherit;
@@ -213,7 +214,7 @@ h1 {
   .Student_title__cko1K {
     text-align: center;
   }
-  .card {
+  .menu-card {
     margin-top: 10px;
   }
   .card-body.cart-body {

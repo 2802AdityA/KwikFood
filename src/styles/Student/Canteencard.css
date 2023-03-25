@@ -21,9 +21,9 @@ h3{
 .card-title{
     font-family: 'Poppins', sans-serif;
     font-size: 4rem;
-    letter-spacing: 3px;
+    letter-spacing: 2.5px;
     font-weight: 900;
-    word-spacing: 0.5em;
+    word-spacing: 0.5rem;
 
 }
 
@@ -46,10 +46,11 @@ h3{
         margin-left: 20px;
     }
     .card{
-        width: 25rem;
+        width: 19rem;
     }
     .card-title{
-        padding-top: 30px;
+        padding-top: 20px;
+        font-size: 3rem;
         padding-left: 60px;
         padding-right: 20px;
     }
