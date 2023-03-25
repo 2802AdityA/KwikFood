@@ -76,3 +76,8 @@ h6{
   display: block;
   margin: auto;
 }
+
+.transaction{
+    margin-top: 20px;
+    margin-bottom: -20px;
+}

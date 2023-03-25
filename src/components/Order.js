@@ -88,10 +88,10 @@ const Order = ({ order: orders }) => {
     return (
         <div className='order-container' >
             <div className='order-items' >
-            <div className='details'>
-                <h3>CANTEEN NAME</h3>
-                <h6>Order_ID:-{orderNum}</h6>
-            </div>
+                <div className='details'>
+                    <h3>CANTEEN NAME</h3>
+                    <h6>Order_ID:-{orderNum}</h6>
+                </div>
                 <table className="table">
                     <thead>
                         <tr style={{ backgroundColor: "#df929ad4" }}>
@@ -134,6 +134,7 @@ const Order = ({ order: orders }) => {
                     </tbody>
                 </table>
                 <button onClick={handleSubmit} className="pay-button">PAY NOW</button>
+                <h6 className='transaction'>Transaction_ID:-abcdef12345</h6>
             </div>
             <div className='img-container' >
                 <div className='order-status' >
