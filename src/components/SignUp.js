@@ -43,7 +43,7 @@ const SignUp = () => {
 
 	return (
 		<div className="container">
-			<div className="card">
+			<div className=" sign-up-card">
 				<div className="logo-wrapper">
 					<img src={process.env.PUBLIC_URL + "logo.png"} alt="logo" />
 				</div>

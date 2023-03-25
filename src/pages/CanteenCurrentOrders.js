@@ -97,16 +97,15 @@ export default function Canteencurrentorders() {
             ) : (
                 <div className="canteen-current-order-card">
                     <div className="card-body">
-                        <div className="table-responsive">
-                            <table className="table align-middle table-nowrap table-check">
-                                <thead>
-                                    <tr className="table">
-                                        <th className="align-middle">Order-ID</th>
-                                        <th className="align-middle">Item Name</th>
-                                        <th className="align-middle">Total Amount</th>
-                                        <th className="align-middle">View Details</th>
-                                        <th className="align-middle">Order Status</th>
-                                        <th className="align-middle">Current Status</th>
+                            <table className="table  align-middle table-nowrap table-check">
+                                <thead >
+                                    <tr>
+                                        <th className=" col">Order-ID</th>
+                                        <th className=" col">Item Name</th>
+                                        <th className=" col">Total Amount</th>
+                                        <th className=" col">View Details</th>
+                                        <th className=" col">Order Status</th>
+                                        <th className=" col">Current Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -293,7 +292,6 @@ export default function Canteencurrentorders() {
                                     )}
                                 </tbody>
                             </table>
-                        </div>
                     </div>
                 </div>
             )}

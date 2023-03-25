@@ -14,8 +14,6 @@ h3{
     border:0px;
     margin-top: 20px;
     padding:5px;
-    border: 0 solid #8f8383;
-    /* width: 30rem; */
 }
 
 .card-title{
@@ -38,7 +36,6 @@ h3{
 .total-order{
    float:right;
    margin-bottom: 50px;
-   margin-top: -50px;
 }
 
 @media(max-width:768px){
