@@ -1,16 +1,17 @@
 .order-container {
     margin: 1rem 0;
-    border-radius: 2rem;
-    border: 2px solid;
+    border-radius: 1rem;
+    /* border: 2px solid; */
     display: flex;
     width: 60%;
-    background-color: aliceblue;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .order-items {
     width: 500px;
     height: auto;
-    background-color: aliceblue;
+    background-color:white;
     border-radius: 2rem;
     padding: 3rem;
     flex-direction: column;
@@ -24,6 +25,12 @@
     align-items: center;
 }
 
+.badge{
+    margin-top: 5px;
+    margin-left: 100px;
+    padding: 5px;
+}
+
 .order-status {
     width: 150px;
     height: 150px;
@@ -35,7 +42,7 @@
 }
 
 .card {
-    background-color: aliceblue;
+    background-color: white;
 }
 
 
