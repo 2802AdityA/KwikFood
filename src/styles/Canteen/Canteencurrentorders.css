@@ -82,8 +82,8 @@
 /* Media query for screens with a minimum width of 768px */
 @media (min-width: 768px) {
     /* Adjust .canteen-current-order-card margin */
-    .canteen-current-order-card{
-        /* margin-left: 50px;
-        margin-right: 50px; */
-    }
+    /* .canteen-current-order-card{
+        margin-left: 50px;
+        margin-right: 50px;
+    } */
 }
