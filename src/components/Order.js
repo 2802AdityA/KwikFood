@@ -94,7 +94,7 @@ const Order = ({ order: orders }) => {
                 </div>
                 <table className="table">
                     <thead>
-                        <tr style={{ backgroundColor: "#df929ad4" }}>
+                        <tr>
 
                             <th scope="col">Item</th>
                             <th scope="col">Quantity</th>
@@ -116,7 +116,7 @@ const Order = ({ order: orders }) => {
                         })}
 
                         <tr>
-                            <th scope='row' colSpan='3'>Total</th>
+                            <th scope='row' colSpan='2' >Total</th>
                             <td>
                                 {orders.amount}
                                 {/* {order.amount.reduce((accumulator, item) => accumulator + item.price, 0)} */}
