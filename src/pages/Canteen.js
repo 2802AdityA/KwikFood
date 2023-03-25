@@ -192,9 +192,11 @@ const Canteen = () => {
 	return (
 		<div>
 			<h1 className="today-menu">MENU</h1>
-			<button className="add-menu" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-				<i className="fa-solid fa-plus"></i>Add Menu
-			</button>
+			<div className="add-menu-btn-container" >
+				<button className="add-menu" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+					<i className="fa-solid fa-plus"></i>Add Menu
+				</button>
+			</div>
 			<div className="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 				<div className="modal-dialog modal-dialog-centered">
 					<div className="modal-content">
@@ -230,7 +232,7 @@ const Canteen = () => {
 			) : (
 				<>
 					<form onSubmit={handleEditMenuSubmit}>
-						<div className="card">
+						<div className="modify-card">
 							<div className="card-body">
 									<table className="table align-middle table-nowrap table-check">
 										<thead>

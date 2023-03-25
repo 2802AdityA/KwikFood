@@ -95,7 +95,7 @@ export default function Canteencurrentorders() {
             {!data ? (
                 "no data"
             ) : (
-                <div className="card">
+                <div className="canteen-current-order-card">
                     <div className="card-body">
                         <div className="table-responsive">
                             <table className="table align-middle table-nowrap table-check">
