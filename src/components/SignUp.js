@@ -45,7 +45,7 @@ const SignUp = () => {
 		<div className="container">
 			<div className=" sign-up-card">
 				<div className="logo-wrapper">
-					<img src={process.env.PUBLIC_URL + "logo.png"} alt="logo" />
+					<img src={process.env.PUBLIC_URL + "logo-form.png"} alt="logo" />
 				</div>
 
 				{needsEmailVerification ? (
