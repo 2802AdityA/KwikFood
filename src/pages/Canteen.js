@@ -234,7 +234,7 @@ const Canteen = () => {
 							<div className="card-body">
 									<table className="table align-middle table-nowrap table-check">
 										<thead>
-											<tr className="row" style={{ backgroundColor: "#df929ad4" }}>
+											<tr className="row" style={{ backgroundColor: "#d7c5d3d" }}>
 												<th className="col">Item Name</th>
 												<th className="col">Price</th>
 												<th className="col">Quantity</th>

@@ -32,7 +32,7 @@ const StudentHome = (props) => {
 
 	return (
 		<div className="student-home">
-			<h1 className="heading">Order Your Meal</h1>
+			<h1 className="heading"> Order Your Meal </h1>
 			<p className="call-to-action">
 				Welcome, {user?.metadata?.firstName || "stranger"}{" "}
 			</p>
@@ -53,9 +53,9 @@ const StudentHome = (props) => {
 							{/* <form className="app-search">
 								<input type="text" className="form-control" placeholder="Search" />
 							</form> */}
-							<table className="table">
+							<table className="table ">
 								<thead>
-									<tr className="row" style={{ backgroundColor: "#df929ad4" }}>
+									<tr className="row">
 										<th className="col">Item Name</th>
 										<th className="col">Price</th>
 										<th className="col">Available Quantity</th>
