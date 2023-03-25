@@ -1,14 +1,19 @@
 .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
   max-width: 32rem;
 }
 
-.card {
+.signin-card {
   border-radius: 15px;
   border-color: #2563eb;
   border-width: 3px;
   display: flex;
   flex-direction: column;
+  width: 75%;
   align-items: center;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -19,7 +24,7 @@
 }
 
 @media (max-width: 600px) {
-  .card {
+  .signin-card {
     padding-left: 2rem;
     padding-right: 2rem;
     background-color: rgb(255, 255, 255);
@@ -32,6 +37,7 @@
 }
 
 .logo-wrapper {
+  display: flex;
   height: 5rem;
   margin-bottom: 1.7rem;
 }

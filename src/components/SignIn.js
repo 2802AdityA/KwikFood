@@ -33,7 +33,7 @@ const SignIn = () => {
 	const disableForm = isLoading || needsEmailVerification;
 	return (
 		<div className="container">
-			<div className="card">
+			<div className="signin-card">
 				<div className="logo-wrapper">
 					<img src={process.env.PUBLIC_URL + "logo.png"} alt="logo" />
 				</div>

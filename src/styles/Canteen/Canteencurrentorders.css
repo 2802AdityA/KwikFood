@@ -1,4 +1,4 @@
-.card{
+.canteen-current-order-card{
     margin-left: 30px;
     margin-right: 30px;
 }
@@ -53,4 +53,28 @@
 
 .badge{
     font-size: 0.85rem;
+}
+
+
+/* Media query for screens with a maximum width of 767px */
+@media (max-width: 767px) {
+    /* Adjust .canteen-current-order-card margin */
+    .canteen-current-order-card{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    /* Adjust .modal-body button font-size */
+    .modal-body button{
+        font-size: 13px;
+    }
+}
+
+/* Media query for screens with a minimum width of 768px */
+@media (min-width: 768px) {
+    /* Adjust .canteen-current-order-card margin */
+    .canteen-current-order-card{
+        margin-left: 50px;
+        margin-right: 50px;
+    }
 }
