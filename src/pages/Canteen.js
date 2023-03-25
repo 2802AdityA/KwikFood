@@ -219,7 +219,7 @@ const Canteen = () => {
 									<input className="form-control" type="text" placeholder="Quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)}></input>
 								</div>
 								<div className="modal-footer">
-									<button type="submit" className=" btn btn-outline-primary">Add Menu</button>
+									<button type="submit" className=" btn">Add Menu</button>
 								</div>
 							</form>
 						</div>
@@ -236,7 +236,7 @@ const Canteen = () => {
 							<div className="card-body">
 									<table className="table align-middle table-nowrap table-check">
 										<thead>
-											<tr className="row" style={{ backgroundColor: "#d7c5d3d" }}>
+											<tr className="row">
 												<th className="col">Item Name</th>
 												<th className="col">Price</th>
 												<th className="col">Quantity</th>

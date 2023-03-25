@@ -1,6 +1,9 @@
 .canteen-current-order-card{
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    background-color:white;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    border-radius: 10px;
 }
 
 .card-body{
@@ -10,7 +13,7 @@
 }
 
 .modal-header{
-    background-color:#b91828b8;
+    background-color:#173f4e;
     color: white;
 }
 
@@ -19,9 +22,6 @@
     font-size: 20px;
 }
 
-.modal button{
-    margin: 10px;
-}
 
 .status{
     padding-left:100px;
@@ -33,19 +33,26 @@
 }
 
 .modal-footer button{
-    background-color: #b91828b8;
-    color: white;
+    background-color: #173f4e;
+    color: #fff;
+    font-weight: 700;
+    margin: 10px;
+}
+
+.modal-footer button:hover{
+    background-color: #85aaaa;
+    color: #173f4e;
 }
 
 .table-btn{
-    background-color:#b91828b8;
-    color: white;
-    font-weight: 500;
+    background-color:#85aaaa;
+    color: #173f4e;
+    font-weight: 600;
 }
 
 
 .table-btn:hover{
-    background-color: rgb(20, 111, 97);
+    background-color:#a65111;
     color: white;
 }
 
@@ -76,7 +83,7 @@
 @media (min-width: 768px) {
     /* Adjust .canteen-current-order-card margin */
     .canteen-current-order-card{
-        margin-left: 50px;
-        margin-right: 50px;
+        /* margin-left: 50px;
+        margin-right: 50px; */
     }
 }
