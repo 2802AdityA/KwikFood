@@ -30,6 +30,7 @@ const Orders = () => {
 
   return (
     <div className='orders-container'>
+      <h1> YOUR ORDERS</h1>
       {orders.map(order => <Order key={order.order_num} order={order} />)}
     </div>
   )

@@ -278,9 +278,8 @@ export default function Canteencurrentorders() {
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    {/* <td className={statusColor} style={{color:"white"}}>{order.order_status}</td> */}
                                                     <td>
-                                                    <span class={`badge rounded-pill text-bg-${statusColor} badge-font-size-25`}>{order.order_status}</span>
+                                                    <span className={`badge rounded-pill text-bg-${statusColor} badge-font-size-25`}>{order.order_status}</span>
                                                     </td>
                                                 </tr>
                                             );

@@ -29,7 +29,7 @@ const Order = ({ order: orders }) => {
 
     const amountValue = data?.current_orders[0]?.amount;
 
-    
+
     // razorpay payment gateway
     const { user } = useOutletContext();
     const [fname, setFName] = useState("");
@@ -76,13 +76,25 @@ const Order = ({ order: orders }) => {
 
     //conditional logic for status display
     const orderStatusURL = orders.order_status === 'Preparing' ? preparing : (orders.order_status === 'Ready' ? ready : placed);
+    let statusColor = '';
+    if (orders.order_status === 'Preparing') {
+        statusColor = 'warning';
+    } else if (orders.order_status === 'Ready') {
+        statusColor = 'success';
+    } else {
+        statusColor = 'danger';
+    }
 
     return (
         <div className='order-container' >
             <div className='order-items' >
+                <div className='details'>
+                    <h3>CANTEEN NAME</h3>
+                    <h6>Order_ID:-{orderNum}</h6>
+                </div>
                 <table className="table">
                     <thead>
-                        <tr>
+                        <tr style={{ backgroundColor: "#df929ad4" }}>
 
                             <th scope="col">Item</th>
                             <th scope="col">Quantity</th>
@@ -111,15 +123,18 @@ const Order = ({ order: orders }) => {
                             </td>
                         </tr>
                         <tr>
-                            <th scope='row' colSpan='4'></th>
+                            <th scope='row' colSpan='4' style={{ border: "none" }}></th>
                         </tr>
                         <tr>
-                            <th scope='row' colSpan='2'>Order Status</th>
-                            <td>{orders.order_status}</td>
+                            <th scope='row' colSpan='2' style={{ border: "none" }}>Order Status</th>
+                            <td style={{ border: "none" }}>
+                                <span className={`badge rounded-pill text-bg-${statusColor} badge-font-size-20`} >{orders.order_status}</span>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-                <button onClick={handleSubmit}>PAY</button>
+                <button onClick={handleSubmit} className="pay-button">PAY NOW</button>
+                <h6 className='transaction'>Transaction_ID:-abcdef12345</h6>
             </div>
             <div className='img-container' >
                 <div className='order-status' >
