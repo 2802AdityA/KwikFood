@@ -14,6 +14,7 @@ const GET_CURRENT_ORDERS = gql`
       order_time
       student_id
       order_status
+      payment_status
     }
   }
 `;
@@ -88,6 +89,8 @@ export default function Canteencurrentorders() {
     if (error) return `Error! ${error.message}`;
 
     const orderList = data?.current_orders;
+    const paymentStatus = data?.current_orders[0].payment_status;
+    console.log(paymentStatus);
 
     return (
         <div>
@@ -106,6 +109,7 @@ export default function Canteencurrentorders() {
                                         <th className=" col">View Details</th>
                                         <th className=" col">Order Status</th>
                                         <th className=" col">Current Status</th>
+                                        <th className=" col">Payment Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -280,6 +284,14 @@ export default function Canteencurrentorders() {
                                                     </td>
                                                     <td>
                                                     <span className={`badge rounded-pill text-bg-${statusColor} badge-font-size-25`}>{order.order_status}</span>
+                                                    </td>
+                                                   {/* show the payment status mapped from the order which is in boolean */}
+                                                    <td>
+                                                        {order.payment_status ? (
+                                                            <span className="badge rounded-pill text-bg-success badge-font-size-25">Paid</span>
+                                                        ) : (
+                                                            <span className="badge rounded-pill text-bg-danger badge-font-size-25">Unpaid</span>
+                                                        )}
                                                     </td>
                                                 </tr>
                                             );

@@ -4,7 +4,7 @@ import placed from "../assets/placed.svg";
 import ready from "../assets/ready.svg"
 //stylesheet import
 import '../styles/components/Order.css';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery, gql, useMutation } from '@apollo/client';
 import { useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 
@@ -14,9 +14,30 @@ const GET_CURRENT_ORDERS = gql`
 query currentOrders($order_num: numeric!) {
   current_orders(where: {order_num: {_eq: $order_num}}) {
     amount
+    canteen_email
   }
 }
 `;
+
+// Get canteen name from canteen email query
+const GET_CANTEEN_NAME = gql`query canteenName($canteen_email: citext!) {
+    canteen_email(where: {owner_email: {_eq: $canteen_email}}) {
+        canteen_name
+    }
+}`
+
+
+// Update payment status query from current orders table
+const UPDATE_PAYMENT_STATUS = gql`
+mutation updatePaymentStatus($order_num: numeric!, $payment_status: Boolean!) {
+    update_current_orders(where: {order_num: {_eq: $order_num}}, _set: {payment_status: $payment_status}) {
+        affected_rows
+        returning {
+            payment_status
+        }
+    }
+}`;
+
 
 const Order = ({ order: orders }) => {
 
@@ -30,6 +51,30 @@ const Order = ({ order: orders }) => {
     const amountValue = data?.current_orders[0]?.amount;
 
 
+    // get canteen email
+    const canteenEmail = data?.current_orders[0]?.canteen_email;
+    // get canteen name
+    const { data: canteenName } = useQuery(GET_CANTEEN_NAME, {
+        variables: { canteen_email: canteenEmail },
+    });
+    const canteenNameValue = canteenName?.canteen_email[0]?.canteen_name
+
+
+    // check payment status
+    const [updatePaymentStatus] = useMutation(UPDATE_PAYMENT_STATUS);
+    const [paymentStatus, setPaymentStatus] = useState(false);
+    useEffect(() => {
+        if (paymentStatus) {
+            updatePaymentStatus({
+                variables: {
+                    order_num: orderNum,
+                    payment_status: paymentStatus,
+                },
+            });
+        }
+    }, [paymentStatus, updatePaymentStatus, orderNum]);
+
+
     // razorpay payment gateway
     const { user } = useOutletContext();
     const [fname, setFName] = useState("");
@@ -41,7 +86,6 @@ const Order = ({ order: orders }) => {
         setEmail(user.email); // eslint-disable-next-line
     }, []);
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const options = {
@@ -51,11 +95,9 @@ const Order = ({ order: orders }) => {
             currency: 'INR',
             name: 'KWIK FOOD',
             description: 'Transaction for Kwik Food',
-            // image: 'https://example.com/your_logo',
+            image: 'https://example.com/your_logo',
             handler: function (response) {
-                alert(response.razorpay_payment_id);
-                alert(response.razorpay_order_id);
-                alert(response.razorpay_signature)
+                setPaymentStatus(true);
             },
             prefill: {
                 name: `${fname} ${lname}`,
@@ -89,8 +131,8 @@ const Order = ({ order: orders }) => {
         <div className='order-container' >
             <div className='order-items' >
                 <div className='details'>
-                    <h3>CANTEEN NAME</h3>
-                    <h6>Order_ID:-{orderNum}</h6>
+                    <h3>{canteenNameValue}</h3>
+                    <h6>Order Number - {orderNum}</h6>
                 </div>
                 <table className="table">
                     <thead>
@@ -133,8 +175,23 @@ const Order = ({ order: orders }) => {
                         </tr>
                     </tbody>
                 </table>
-                <button onClick={handleSubmit} className="pay-button">PAY NOW</button>
-                <h6 className='transaction'>Transaction_ID:-abcdef12345</h6>
+                {orders.order.map((item, index) => {
+                    // if payment is done then show the button
+                    if (!item.payment_status) {
+                        return (
+                            <div className='btn-container' key={item.id}>
+                                <button className='btn btn-success' onClick={handleSubmit} >Pay</button>
+                            </div>
+                        )
+                    }
+                    else{
+                        return (
+                            <div className='btn-container' key={item.id}>
+                                <button className='btn btn-success' disabled >Paid</button>
+                            </div>
+                        )
+                    }
+                })}
             </div>
             <div className='img-container' >
                 <div className='order-status' >
