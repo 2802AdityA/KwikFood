@@ -5,6 +5,8 @@
 
 .card-body{
     width: 90%;
+    margin: auto;
+    padding: 20px;
 }
 
 .modal-header{
