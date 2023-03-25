@@ -102,7 +102,7 @@ const Cart = (menuList) => {
 					<div className="card-body cart-body">
 						<table className="table">
 							<thead>
-								<tr className="row " style={{backgroundColor:"#df929ad4"}}>
+								<tr className="row ">
 									<th className="col">Item Name</th>
 									<th className="col">Price</th>
 									<th className="col">Quantity</th>
@@ -166,19 +166,21 @@ const Cart = (menuList) => {
 					</div>
 					<div className="col-auto order-buttons">
 						<button
-							className="btn btn-danger m-2"
+							className="btn m-2"
 							onClick={() => {
 								emptyCart();
 							}}
+							style={{backgroundColor:"#a65111",color:"white"}}
 						>
 							Empty Cart
 						</button>
 						<button
-							className="btn btn-success m-2"
+							className="btn m-2"
 							onClick={() => {
 								handleSubmitOrder();
 								emptyCart();
 							}}
+							style={{backgroundColor:"#173f4e",color:"white"}}
 						>
 							Place Order
 						</button>

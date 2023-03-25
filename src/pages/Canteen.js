@@ -192,9 +192,11 @@ const Canteen = () => {
 	return (
 		<div>
 			<h1 className="today-menu">MENU</h1>
-			<button className="add-menu" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-				<i className="fa-solid fa-plus"></i>Add Menu
-			</button>
+			<div className="add-menu-btn-container" >
+				<button className="add-menu" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+					<i className="fa-solid fa-plus"></i>Add Menu
+				</button>
+			</div>
 			<div className="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 				<div className="modal-dialog modal-dialog-centered">
 					<div className="modal-content">
@@ -217,7 +219,7 @@ const Canteen = () => {
 									<input className="form-control" type="text" placeholder="Quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)}></input>
 								</div>
 								<div className="modal-footer">
-									<button type="submit" className=" btn btn-outline-primary">Add Menu</button>
+									<button type="submit" className=" btn">Add Menu</button>
 								</div>
 							</form>
 						</div>
@@ -230,11 +232,11 @@ const Canteen = () => {
 			) : (
 				<>
 					<form onSubmit={handleEditMenuSubmit}>
-						<div className="card">
+						<div className="modify-card">
 							<div className="card-body">
 									<table className="table align-middle table-nowrap table-check">
 										<thead>
-											<tr className="row" style={{ backgroundColor: "#df929ad4" }}>
+											<tr className="row">
 												<th className="col">Item Name</th>
 												<th className="col">Price</th>
 												<th className="col">Quantity</th>

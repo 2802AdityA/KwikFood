@@ -14,16 +14,14 @@ h3{
     border:0px;
     margin-top: 20px;
     padding:5px;
-    border: 0 solid #8f8383;
-    /* width: 30rem; */
 }
 
 .card-title{
     font-family: 'Poppins', sans-serif;
     font-size: 4rem;
-    letter-spacing: 3px;
+    letter-spacing: 2.5px;
     font-weight: 900;
-    word-spacing: 0.5em;
+    word-spacing: 0.5rem;
 
 }
 
@@ -37,6 +35,7 @@ h3{
 
 .total-order{
    float:right;
+   margin-bottom: 50px;
 }
 
 @media(max-width:768px){
@@ -44,10 +43,11 @@ h3{
         margin-left: 20px;
     }
     .card{
-        width: 25rem;
+        width: 19rem;
     }
     .card-title{
-        padding-top: 30px;
+        padding-top: 20px;
+        font-size: 3rem;
         padding-left: 60px;
         padding-right: 20px;
     }

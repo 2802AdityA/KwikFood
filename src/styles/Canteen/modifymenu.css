@@ -1,13 +1,17 @@
 /* CANTEEN */
 
-.card{
+
+.add-menu-btn-container {
+  margin-bottom: -4rem;
+}
+
+.modify-card{
   margin-top: 80px;
   margin-bottom: 80px;
   background-color:white;
-}
-
-.today-menu{
-  font-size: 50px;
+  padding: 20px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  border-radius: 10px;
 }
 
 .add-menu {
@@ -17,20 +21,16 @@
   margin-bottom: 15px;
   padding-bottom: 7px;
   padding-top: 7px;
-  background-color: #b91828b8;
-  color: white;
-  font-weight: 500;
+  background-color: #85aaaa;
+  color: #173f4e;
+  font-weight: 700;
   border-radius: 10px;
-}
-
-.modal-header {
-  background-color: #b91828b8
 }
 
 .modal-title {
   font-weight: 700;
   font-size: 20px;
-  color: aliceblue;
+  color: #fff;
 }
 
 .modal-body label {
@@ -67,3 +67,11 @@ button {
   padding: 2px;
 }
 /* EDITROW */
+
+
+@media (max-width: 768px) {
+  .add-menu-btn-container {
+    display: flex;
+    justify-content: center;
+  }
+} 

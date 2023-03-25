@@ -29,6 +29,7 @@ export default function Canteencards() {
         <div>
         <h1 className="text-center">Canteens</h1>
         <h3 className="text-center">Choose your foodie fate, select your canteen mate!</h3>
+        <div className='canteen-container' >
         <div className='row'>
             {canteenEmail.map((canteen) => (
                 <div className="col-lg-6 col-md-6" onClick={() => { cardChoose(canteen.owner_email, canteen.canteen_name) }}>
@@ -40,6 +41,8 @@ export default function Canteencards() {
                     </div>
                 </div>
             ))}
+        </div>
+
         </div>
         </div>
     )
