@@ -3,6 +3,7 @@
   border-width: 0;
   border-style: solid;
   border-color: rgb(243, 244, 246);
+  font-family: "roboto", sans-serif;
 }
 
 html,
@@ -54,4 +55,14 @@ button {
   cursor: pointer;
   background-color: transparent;
   background-image: none;
+}
+
+.table{
+  text-align: center;
+}
+
+thead tr{
+  background-color: #173f4e;
+  color: #fff;
+  border-radius: 5px;
 }

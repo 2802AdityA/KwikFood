@@ -37,6 +37,8 @@ h3{
 
 .total-order{
    float:right;
+   margin-bottom: 50px;
+   margin-top: -50px;
 }
 
 @media(max-width:768px){
