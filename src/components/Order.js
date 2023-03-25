@@ -88,6 +88,10 @@ const Order = ({ order: orders }) => {
     return (
         <div className='order-container' >
             <div className='order-items' >
+            <div className='details'>
+                <h3>CANTEEN NAME</h3>
+                <h6>Order_ID:-{orderNum}</h6>
+            </div>
                 <table className="table">
                     <thead>
                         <tr style={{ backgroundColor: "#df929ad4" }}>
@@ -119,17 +123,17 @@ const Order = ({ order: orders }) => {
                             </td>
                         </tr>
                         <tr>
-                            <th scope='row' colSpan='4'  style={{border:"none"}}></th>
+                            <th scope='row' colSpan='4' style={{ border: "none" }}></th>
                         </tr>
                         <tr>
-                            <th scope='row' colSpan='2' style={{border:"none"}}>Order Status</th>
-                            <td  style={{border:"none"}}>
-                                <span class={`badge rounded-pill text-bg-${statusColor} badge-font-size-20`} >{orders.order_status}</span>
+                            <th scope='row' colSpan='2' style={{ border: "none" }}>Order Status</th>
+                            <td style={{ border: "none" }}>
+                                <span className={`badge rounded-pill text-bg-${statusColor} badge-font-size-20`} >{orders.order_status}</span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <button onClick={handleSubmit}>PAY</button>
+                <button onClick={handleSubmit} className="pay-button">PAY NOW</button>
             </div>
             <div className='img-container' >
                 <div className='order-status' >
