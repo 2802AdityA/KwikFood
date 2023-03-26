@@ -175,7 +175,10 @@ const Order = ({ order: orders }) => {
                         </tr>
                     </tbody>
                 </table>
-                {orders.order.map((item, index) => {
+                <div className='btn-container' >
+                    <button className='btn btn-success' onClick={handleSubmit} >Pay</button>
+                </div>
+                {/* {orders.order.map((item, index) => {
                     // if payment is done then show the button
                     if (!item.payment_status) {
                         return (
@@ -184,14 +187,14 @@ const Order = ({ order: orders }) => {
                             </div>
                         )
                     }
-                    else{
+                    else {
                         return (
                             <div className='btn-container' key={item.id}>
                                 <button className='btn btn-success' disabled >Paid</button>
                             </div>
                         )
                     }
-                })}
+                })} */}
             </div>
             <div className='img-container' >
                 <div className='order-status' >

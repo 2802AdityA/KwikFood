@@ -234,43 +234,43 @@ const Canteen = () => {
 					<form onSubmit={handleEditMenuSubmit}>
 						<div className="modify-card">
 							<div className="card-body">
-									<table className="table align-middle table-nowrap table-check">
-										<thead>
-											<tr className="row">
-												<th className="col">Item Name</th>
-												<th className="col">Price</th>
-												<th className="col">Quantity</th>
-												<th className="col">Actions</th>
-											</tr>
-										</thead>
-										<tbody>
-											{!error
-												? menuList?.map((itemDetails) => {
-													return (
-														<>
-															{editMenuId === itemDetails.id ? (
-																<EditRow
-																	editMenuData={editMenuData}
-																	handleEditMenuChange={handleEditMenuChange}
-																	handleCancelClick={handleCancelClick}
-																/>
-															) : (
-																<ReadRow
-																	itemDetails={itemDetails}
-																	handleEditClick={handleEditClick}
-																	handleDeleteClick={handleDeleteClick}
-																/>
-															)}
-														</>
-													);
-												})
-												: "Something went wrong, Check back after sometime "}
-										</tbody>
-									</table>
+								<table className="table align-middle table-nowrap table-check">
+									<thead>
+										<tr className="row">
+											<th className="col">Item Name</th>
+											<th className="col">Price</th>
+											<th className="col">Quantity</th>
+											<th className="col">Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										{!error
+											? menuList?.map((itemDetails) => {
+												return (
+													<>
+														{editMenuId === itemDetails.id ? (
+															<EditRow
+																editMenuData={editMenuData}
+																handleEditMenuChange={handleEditMenuChange}
+																handleCancelClick={handleCancelClick}
+															/>
+														) : (
+															<ReadRow
+																itemDetails={itemDetails}
+																handleEditClick={handleEditClick}
+																handleDeleteClick={handleDeleteClick}
+															/>
+														)}
+													</>
+												);
+											})
+											: "Something went wrong, Check back after sometime "}
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</form>
-					<CanteenCurrentOrders />
+
 				</>
 			)}
 		</div>

@@ -45,8 +45,8 @@ function App() {
 							<Route path="canteens/:canteenName" Component={Student} />
 							<Route path="canteen" Component={Canteen} />
 
-							<Route path="canteenorders" Component={CanteenCurrentOrders} />
-
+							{/* <Route path="canteenorders" Component={CanteenCurrentOrders} /> */}
+							<Route path="studentOrders" Component={CanteenCurrentOrders} />
 							<Route path="orders" Component={Orders} />
 
 						</Route>
