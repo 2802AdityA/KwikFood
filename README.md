@@ -1,91 +1,55 @@
-# Getting Started with Create React App
+# KwikFood - Online Canteen Project
 
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
+KwikFood is a web-based platform built using ReactJS for the front-end and Nhost cloud-based for the back-end. The platform uses PostgreSQL and GraphQL APIs provided by Nhost to facilitate the development process. It is accessible from any device with an internet connection and has a user-friendly and easy to navigate interface.
 
-## Available Scripts
+## Technologies and Frameworks
 
-In the project directory, you can run:
+- ReactJS for the front-end
+- Nhost cloud-based for the back-end
+- PostgreSQL and GraphQL APIs provided by Nhost
+- Replit for front-end deployment
 
-### `npm start`
+## Scalability
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To ensure that the KwikFood platform can handle a high volume of traffic and data, we are using Nhost as a cloud-based hosting provider and Replit for front-end deployment. This allows us to scale up or down the platform's resources as needed, ensuring that it remains fast and responsive for our users.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+To use the KwikFood platform as a student, you can create a new account using your email and password. Alternatively, you can use the following credentials to login:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests)
-for more information.
+- Email: adityasingla.2802@gmail.com 
+- Password: student@123 
 
-### `npm run build`
+To access the canteen side, please use the following credentials:
+- Email: adityasingla.alt@gmail.com 
+- Password: canteen@123 
+- Email: smile61814@gmail.com 
+- Password: 123456789 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best
-performance.
+## Project Host Link
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Visit our project on this link: https://kwikfood.2802aditya.repl.co/
 
-See the section about
-[deployment](https://facebook.github.io/create-react-app/docs/deployment) for
-more information.
+## Project Demo
 
-### `npm run eject`
+Check out our project demo on YouTube to see how KwikFood works: https://youtu.be/gg5Y4RZiO-8
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Partner with KwikFood
 
-If you aren't satisfied with the build tool and configuration choices, you can
-`eject` at any time. This command will remove the single build dependency from
-your project.
+If you are a canteen owner and would like to partner with KwikFood, please contact us through our website. We will provide you with a simple dashboard to manage your menu and orders.
 
-Instead, it will copy all the configuration files and the transitive
-dependencies (webpack, Babel, ESLint, etc) right into your project so you have
-full control over them. All of the commands except `eject` will still work, but
-they will point to the copied scripts so you can tweak them. At this point
-you're on your own.
+## Contributing
 
-You don't have to ever use `eject`. The curated feature set is suitable for
-small and middle deployments, and you shouldn't feel obligated to use this
-feature. However we understand that this tool wouldn't be useful if you couldn't
-customize it when you are ready for it.
+If you want to contribute to this project, please follow these steps:
 
-## Learn More
+1. Fork the repository using the "Fork" button on GitHub
+2. Clone the forked repository to your local machine
+3. Create a new branch for your changes using `git checkout -b your-branch-name`
+4. Make your changes and commit them using `git commit -m "your commit message"`
+5. Push your changes to your forked repository using `git push origin your-branch-name`
+6. Create a pull request on GitHub
 
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Acknowledgments
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Our platform was inspired by the need for a simple and efficient way to order food from canteens.
+- Thanks to the contributors who have helped improve the project.
