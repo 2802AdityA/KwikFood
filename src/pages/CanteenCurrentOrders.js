@@ -247,7 +247,7 @@ export default function Canteencurrentorders() {
                                                                             aria-label="Close"
                                                                         ></button>
                                                                     </div>
-                                                                    <div className="modal-body status">
+                                                                    <div className="modal-body">
                                                                         <button
                                                                             type="button"
                                                                             className="btn btn-sm btn-outline-warning font-size-12"
